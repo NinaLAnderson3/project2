@@ -1,0 +1,4 @@
+Variable List
+
+This is a plain text file where the purpose is to add our important variables that we will be using in multiple different places instead of going through each file just to get the variable. 
+If you want to put a description on it, go ahead. But this is really more a helpful tool than anything else. 
