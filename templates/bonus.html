@@ -84,7 +84,7 @@
           <div id="sunburst1"></div>
         </div>
         <div class="col-md-6" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1500">
-          <h1 class="aos-init aos-animate text-center text-white" data-aos="fade-up" data-aos-easing="ease">
+          <h1 class="aos-init aos-animate text-center text-white" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
             NJ schools
           </h1>
           <div id="sunburst2"></div>
@@ -96,22 +96,24 @@
         </div>
       </div> 
       <div class="row">
-        <span class="hero__scroll hero__scroll1 aos-init aos-animate text-center text-white animate__animated animate__fadeInUp animate__delay-2s" data-aos="fade-up" data-aos-easing="ease" data-aos-duration="1500" style ="display:none">
+        <span class="hero__scroll hero__scroll1 aos-init aos-animate text-center text-white" data-aos="fade-up" data-aos-easing="ease" data-aos-duration="1500">
             Scroll down!<br>
             <i class="chevron bottom"></i>
         </span>
       </div>
-      <br><br><br><br><br><br><br>
-      <div class="row bg-light justify-content-center">
-        <div id="d3ZoomSunburst"></div>
+      <br><br><br><br><br><br><br><br><br><br>
+      <div class="row ">
+        <div class = "col-lg-12 bg-transparent justify-content-center">
+          <div id="d3ZoomSunburst" class = "col-md-12 bg-light justify-content-center">
+          </div>
+        </div>
       </div>
-
+      <div class="row" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="3000">
+        <h1 class="aos-init aos-animate text-center text-white" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+          NJ schools by d3
+        </h1>
+      </div>
     </div>
-    <footer class="mastfoot mt-auto text-center text-white">
-      <div class="inner">
-        <p><a class="foot-a" href="https://github.com/DanZanoria/project2.git" target= 'blank_'>Project 2</a> by Back Benchers-2 &#169; 2021</p>
-      </div>
-    </footer> 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -129,7 +131,7 @@
     <script>
         AOS.init();
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script> -->
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/nj-bonus.js') }}"></script>
@@ -174,6 +176,11 @@
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
-</script>
+  </script>
+  <footer class="mastfoot text-center text-white">
+    <div class="inner">
+      <p><a class="foot-a" href="https://github.com/DanZanoria/project2.git" target= 'blank_'>Project 2</a> by Back Benchers-2 &#169; 2021</p>
+    </div>
+  </footer> 
   </body>
 </html>

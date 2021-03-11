@@ -237,7 +237,7 @@ def d3_zoom_sunburst():
         
     data_json["children"] = children
     print("Data retrieval successfull")
-    
+
     return jsonify(data_json)
 
 @app.route('/leaflet')

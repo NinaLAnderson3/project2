@@ -1,10 +1,11 @@
+// crime plotly sunburst
 Plotly.d3.csv('api/sunburst1_data', function(err, rows){
     if (err) throw err;
     function unpack(rows, key) {
   return rows.map(function(row) { return row[key]; });
 }
 
-console.log(unpack(rows, 'value'));
+// console.log(unpack(rows, 'value'));
 var data = [
     {
       type: "sunburst",
@@ -31,12 +32,15 @@ var layout = {
 Plotly.newPlot('sunburst1', data, layout, {showSendToCloud: true});
 });
 
+// ------------------------------------------------------------------------------
+
+// school plotly sunburst
 Plotly.d3.csv('api/sunburst2_data', function(err, rows){
     if (err) throw err;
     function unpack(rows, key) {
   return rows.map(function(row) { return row[key]; });
 }
-console.log(unpack(rows, 'value'));
+// console.log(unpack(rows, 'value'));
 var data = [
     {
       type: "sunburst",
@@ -64,8 +68,18 @@ Plotly.newPlot('sunburst2', data, layout, {showSendToCloud: true});
 });
 
 
-//  d3 zoomable sunburst 
-var margin = {top: 350, right: 480, bottom: 350, left: 480},
+// ------------------------------------------------------------------------------
+function roundUp(num, precision) {
+  precision = Math.pow(10, precision)
+  return Math.ceil(num * precision) / precision
+}
+function length(obj) {
+  return Object.keys(obj).length;
+}
+
+//  School d3 zoomable sunburst 
+//  Source : http://bl.ocks.org/vgrocha/1580af34e56ee6224d33
+var margin = {top: 350, right: 650, bottom: 350, left: 650},
     radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
 
 function filter_min_arc_size_text(d, i) {return (d.dx*d.depth*radius/3)>14}; 
@@ -77,7 +91,7 @@ var luminance = d3.scale.sqrt()
     .clamp(true)
     .range([90, 20]);
 
-var svg = d3.select("#d3ZoomSunburst").append("svg")
+var svg = d3.select("body").append("svg").classed("img-responsive center-block", true)
     .attr("width", margin.left + margin.right)
     .attr("height", margin.top + margin.bottom)
   .append("g")
@@ -108,14 +122,16 @@ function format_number(x) {
 
 function format_description(d) {
   var description = d.description;
-      return  '<b>' + d.name + '</b></br>'+ d.description + '<br> (' + format_number(d.value) + ')';
+      return  '<b>' + d.name + '</b></br>'+ d.description + '<br> (' + roundUp(d.value,0) + ')';
 }
 
 function computeTextRotation(d) {
+
 	var angle=(d.x +d.dx/2)*180/Math.PI - 90	
 	
 	return angle;
 }
+
 
 function mouseOverArc(d) {
 			 d3.select(this).attr("stroke","black")
@@ -137,29 +153,19 @@ function mouseMoveArc (d) {
             .style("left", (d3.event.pageX+10)+"px");
 }
 
-function length(obj) {
-  return Object.keys(obj).length;
-}
-
-function roundUp(num, precision) {
-  precision = Math.pow(10, precision)
-  return Math.ceil(num * precision) / precision
-}
-
 var root_ = null;
 d3.json("api/d3_zoom_sunburst", function(error, root) {
-  if (error) throw(error);
+  if (error) return console.warn(error);
   // Compute the initial layout on the entire tree to sum sizes.
   // Also compute the full name and fill color for each node,
   // and stash the children so they can be restored as we descend.
-	
+  console.log(root);
   partition
       .value(function(d) { return d.size; })
       .nodes(root)
       .forEach(function(d) {
         d._children = d.children;
         d.sum = d.value;
-        d.avg = roundUp(d.sum/length(d),2);
         d.key = key(d);
         d.fill = fill(d);
       });
@@ -167,7 +173,7 @@ d3.json("api/d3_zoom_sunburst", function(error, root) {
   // Now redefine the value function to use the previously-computed sum.
   partition
       .children(function(d, depth) { return depth < 2 ? d._children : null; })
-      .value(function(d, depth) { return depth < 2 ? d.sum : d.value });
+      .value(function(d) { return d.sum; });
 
   var center = svg.append("circle")
       .attr("r", radius / 3)
