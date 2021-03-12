@@ -89,7 +89,7 @@ var hue = d3.scale.category10();
 var luminance = d3.scale.sqrt()
     .domain([0, 1e6])
     .clamp(true)
-    .range([90, 20]);
+    .range([90, 0]);
 
 var svg = d3.select("body").append("svg").classed("img-responsive center-block", true)
     .attr("width", margin.left + margin.right)
@@ -122,7 +122,11 @@ function format_number(x) {
 
 function format_description(d) {
   var description = d.description;
-      return  '<b>' + d.name + '</b></br>'+ d.description + '<br> (' + roundUp(d.value,0) + ')';
+  // if (d.child_len){
+  //   return  '<b>' + d.name + '</b></br>'+ d.description + '<br> (' + roundUp(d.value/d.child_len,2) + ')';  
+  // } else {
+    return  '<b>' + d.name + '</b></br>'+ roundUp(d.description,2);
+  // }
 }
 
 function computeTextRotation(d) {
@@ -159,15 +163,20 @@ d3.json("api/d3_zoom_sunburst", function(error, root) {
   // Compute the initial layout on the entire tree to sum sizes.
   // Also compute the full name and fill color for each node,
   // and stash the children so they can be restored as we descend.
-  console.log(root);
+  // console.log(root);
   partition
       .value(function(d) { return d.size; })
       .nodes(root)
-      .forEach(function(d) {
+      .forEach(function(d, depth) {
+        if (d.children){
+          d.child_len = length(d.children);
+        }
+        d._depth = depth; 
         d._children = d.children;
         d.sum = d.value;
         d.key = key(d);
         d.fill = fill(d);
+        // console.log(d);
       });
 
   // Now redefine the value function to use the previously-computed sum.
@@ -306,7 +315,7 @@ function fill(d) {
   var p = d;
   while (p.depth > 1) p = p.parent;
   var c = d3.lab(hue(p.name));
-  c.l = luminance(d.sum);
+  c.l = luminance(d.sum*2);
   return c;
 }
 

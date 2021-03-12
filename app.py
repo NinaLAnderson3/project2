@@ -1,5 +1,5 @@
 # dependencies
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify ,url_for
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -208,24 +208,24 @@ def d3_zoom_sunburst():
     for i in range(len(counties)):
         child1 = {}
         child1["name"] = counties[i]
-        child1["description"] = counties[i]
+        child1["description"] = test['summativescore'].loc[test['county_name']==counties[i]].mean()
         district = list(test['district_name'].loc[test['county_name']==counties[i]].unique())
         child2_list = []
         for k in range(len(district)):
             child2 = {}
             child2["name"] = district[k]
-            child2["description"] = district[k]
+            child2["description"] = test['summativescore'].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].mean()
             child3_list = []
             gradespan = list(test['gradespan'].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].unique())
             for j in range(len(gradespan)):
                 child3 = {}
                 child3["name"] = gradespan[j]
-                child3["description"] = gradespan[j]
+                child3["description"] = test["summativescore"].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k]) & (test['gradespan'] == gradespan[j])].mean()
                 child4_list = []
                 for index,row in test.loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k]) & (test['gradespan'] == gradespan[j])].iterrows():
                     child4 = {}
                     child4["name"] = row["school_name"]
-                    child4["description"] = row["school_name"]
+                    child4["description"] = row["summativescore"]
                     child4["size"] = row["summativescore"]
                     child4_list.append(child4)
                 child3["children"] = child4_list
@@ -237,8 +237,13 @@ def d3_zoom_sunburst():
         
     data_json["children"] = children
     print("Data retrieval successfull")
-
+    if data_json:
+        print("Json ready")
     return jsonify(data_json)
+
+@app.route('/school_json')
+def school_json():
+    return "<a href=%s>file</a>" % url_for('static', filename='school.json')
 
 @app.route('/leaflet')
 def leaflet():
