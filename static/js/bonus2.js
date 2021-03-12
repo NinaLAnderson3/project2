@@ -1,81 +1,11 @@
-// crime plotly sunburst
-Plotly.d3.csv('api/sunburst1_data', function(err, rows){
-    if (err) throw err;
-    function unpack(rows, key) {
-  return rows.map(function(row) { return row[key]; });
-}
-
-// console.log(unpack(rows, 'value'));
-var data = [
-    {
-      type: "sunburst",
-      maxdepth: 2,
-      ids: unpack(rows, 'id'),
-      labels: unpack(rows, 'label'),
-      parents: unpack(rows, 'parent'),
-      values: unpack(rows, 'value')
-    }
-  ];
-
-var layout = {
-  margin: {l: 0, r: 0, b: 0, t:0},
-  width: 1370/2,
-  height: 600,
-  sunburstcolorway:[
-    "#636efa","#EF553B","#00cc96","#ab63fa","#19d3f3",
-    "#e763fa", "#FECB52","#FFA15A","#FF6692","#B6E880"
-  ],
-  extendsunburstcolorway: true
-};
-
-
-Plotly.newPlot('sunburst1', data, layout, {showSendToCloud: true});
-});
-
-// ------------------------------------------------------------------------------
-
-// school plotly sunburst
-Plotly.d3.csv('api/sunburst2_data', function(err, rows){
-    if (err) throw err;
-    function unpack(rows, key) {
-  return rows.map(function(row) { return row[key]; });
-}
-// console.log(unpack(rows, 'value'));
-var data = [
-    {
-      type: "sunburst",
-      maxdepth: 4,
-      ids: unpack(rows, 'id'),
-      labels: unpack(rows, 'label'),
-      parents: unpack(rows, 'parent'),
-      values: unpack(rows, 'value')
-    }
-  ];
-
-var layout = {
-  margin: {l: 0, r: 0, b: 0, t:0},
-  width: 1370/2,
-  height: 600,
-  sunburstcolorway:[
-    "#636efa","#EF553B","#00cc96","#ab63fa","#19d3f3",
-    "#e763fa", "#FECB52","#FFA15A","#FF6692","#B6E880"
-  ],
-  extendsunburstcolorway: true
-};
-
-
-Plotly.newPlot('sunburst2', data, layout, {showSendToCloud: true});
-});
-
-
-// ------------------------------------------------------------------------------
 function roundUp(num, precision) {
-  precision = Math.pow(10, precision)
-  return Math.ceil(num * precision) / precision
-}
-function length(obj) {
-  return Object.keys(obj).length;
-}
+    precision = Math.pow(10, precision)
+    return Math.ceil(num * precision) / precision
+  }
+  function length(obj) {
+    return Object.keys(obj).length;
+  }
+
 
 //  School d3 zoomable sunburst 
 //  Source : http://bl.ocks.org/vgrocha/1580af34e56ee6224d33
@@ -91,7 +21,7 @@ var luminance = d3.scale.sqrt()
     .clamp(true)
     .range([90, 0]);
 
-var svg = d3.select("#d3Sunburst").append("svg").classed("img-responsive center-block", true)
+var svg = d3.select("#plot").append("svg").classed("img-responsive center-block", true)
     .attr("width", margin.left + margin.right)
     .attr("height", margin.top + margin.bottom)
   .append("g")
@@ -158,7 +88,7 @@ function mouseMoveArc (d) {
 }
 
 var root_ = null;
-d3.json("api/d3_zoom_sunburst", function(error, root) {
+d3.json("api/d3_zoom_sunburst2", function(error, root) {
   if (error) return console.warn(error);
   // Compute the initial layout on the entire tree to sum sizes.
   // Also compute the full name and fill color for each node,
@@ -332,4 +262,3 @@ function updateArc(d) {
 }
 
 d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
-

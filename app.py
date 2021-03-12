@@ -241,6 +241,50 @@ def d3_zoom_sunburst():
         print("Json ready")
     return jsonify(data_json)
 
+@app.route('/api/d3_zoom_sunburst2')
+def d3_zoom_sunburst2():
+    sqlite_connection = engine.connect()
+
+    query = '''SELECT county_name,district_name,gradespan,school_name,summativescore FROM NJ_school_rating ORDER BY county_name,district_name,gradespan,school_name;'''
+    test = pd.read_sql_query(query, sqlite_connection)
+    
+    sqlite_connection.close()
+    
+    data_json = {}
+    data_json["name"] = "flare"
+    data_json["description"] = "flare"
+    
+    counties = list(test['county_name'].unique())
+    
+    children = []
+    for i in range(len(counties)):
+        child1 = {}
+        child1["name"] = counties[i]
+        child1["description"] = test['summativescore'].loc[test['county_name']==counties[i]].mean()
+        district = list(test['district_name'].loc[test['county_name']==counties[i]].unique())
+        child2_list = []
+        for k in range(len(district)):
+            child2 = {}
+            child2["name"] = district[k]
+            child2["description"] = test['summativescore'].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].mean()
+            child3_list = []
+            for index,row in test.loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].iterrows():
+                child3 = {}
+                child3["name"] = row["school_name"] + "-" + row["gradespan"]
+                child3["description"] = row["summativescore"]
+                child3["size"] = row["summativescore"]
+                child3_list.append(child3)
+            child2["children"] = child3_list
+            child2_list.append(child2)
+        child1["children"] = child2_list
+        children.append(child1)
+        
+    data_json["children"] = children
+    print("Data retrieval successfull")
+    if data_json:
+        print("Json ready")
+    return jsonify(data_json)
+
 @app.route('/school_json')
 def school_json():
     return "<a href=%s>file</a>" % url_for('static', filename='school.json')
