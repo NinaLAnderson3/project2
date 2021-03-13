@@ -1,0 +1,362 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.61701363636367,39.4431 ]
+    },
+    "properties": {
+    "FIELD1":0,
+    "County":"ATLANTIC",
+    "City_id":112,
+    "2020_tax_rate":2.823782608695653,
+    "location":"[39.443099999999994, -74.61701363636365]",
+    "COUNTY_CODE":1,
+    "SummativeRating":31.640169491525416,
+    "SummativeScore":37.06915254237288
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.04464262295082,40.929877049180334 ]
+    },
+    "properties": {
+    "FIELD1":1,
+    "County":"BERGEN",
+    "City_id":235.5,
+    "2020_tax_rate":2.295671428571428,
+    "location":"[40.929877049180334, -74.04464262295082]",
+    "COUNTY_CODE":3,
+    "SummativeRating":69.27294372294372,
+    "SummativeScore":64.97935064935065
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.76062222222222,39.98640555555555 ]
+    },
+    "properties": {
+    "FIELD1":2,
+    "County":"BURLINGTON",
+    "City_id":320.5,
+    "2020_tax_rate":2.744750000000001,
+    "location":"[39.98640555555555, -74.76062222222222]",
+    "COUNTY_CODE":5,
+    "SummativeRating":45.2315,
+    "SummativeScore":46.8643
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.03034749999998,39.866367499999996 ]
+    },
+    "properties": {
+    "FIELD1":3,
+    "County":"CAMDEN",
+    "City_id":419,
+    "2020_tax_rate":3.9072702702702693,
+    "location":"[39.8663675, -75.03034749999998]",
+    "COUNTY_CODE":7,
+    "SummativeRating":39.017054263565896,
+    "SummativeScore":41.72379844961241
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.83048636363638,39.05300909090909 ]
+    },
+    "properties": {
+    "FIELD1":4,
+    "County":"CAPE MAY",
+    "City_id":508.5,
+    "2020_tax_rate":1.2777500000000002,
+    "location":"[39.053009090909086, -74.83048636363637]",
+    "COUNTY_CODE":9,
+    "SummativeRating":33.19409090909091,
+    "SummativeScore":38.47136363636364
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.14281000000003,39.40166 ]
+    },
+    "properties": {
+    "FIELD1":5,
+    "County":"CUMBERLAND",
+    "City_id":607.5,
+    "2020_tax_rate":3.1654285714285715,
+    "location":"[39.40166, -75.14281000000001]",
+    "COUNTY_CODE":11,
+    "SummativeRating":18.81473684210527,
+    "SummativeScore":26.44684210526316
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.23671818181819,40.803672727272726 ]
+    },
+    "properties": {
+    "FIELD1":6,
+    "County":"ESSEX",
+    "City_id":711.5,
+    "2020_tax_rate":2.9509090909090903,
+    "location":"[40.80367272727273, -74.23671818181819]",
+    "COUNTY_CODE":13,
+    "SummativeRating":44.52732620320855,
+    "SummativeScore":46.066149732620325
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.1498947368421,39.75397368421053 ]
+    },
+    "properties": {
+    "FIELD1":7,
+    "County":"GLOUCESTER",
+    "City_id":812.5,
+    "2020_tax_rate":3.516208333333333,
+    "location":"[39.753973684210536, -75.1498947368421]",
+    "COUNTY_CODE":15,
+    "SummativeRating":44.754117647058806,
+    "SummativeScore":46.8026470588235
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.07581,40.75011 ]
+    },
+    "properties": {
+    "FIELD1":8,
+    "County":"HUDSON",
+    "City_id":906.5,
+    "2020_tax_rate":2.074333333333333,
+    "location":"[40.75011, -74.07581]",
+    "COUNTY_CODE":17,
+    "SummativeRating":43.17176470588236,
+    "SummativeScore":46.07901960784315
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.94019999999998,40.58042727272728 ]
+    },
+    "properties": {
+    "FIELD1":9,
+    "County":"HUNTERDON",
+    "City_id":1013.5,
+    "2020_tax_rate":2.6791153846153852,
+    "location":"[40.58042727272727, -74.94019999999999]",
+    "COUNTY_CODE":19,
+    "SummativeRating":61.649249999999995,
+    "SummativeScore":58.4345
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.67112307692308,40.265769230769244 ]
+    },
+    "properties": {
+    "FIELD1":10,
+    "County":"MERCER",
+    "City_id":1107.1666666666667,
+    "2020_tax_rate":3.0301666666666667,
+    "location":"[40.26576923076924, -74.67112307692308]",
+    "COUNTY_CODE":21,
+    "SummativeRating":45.80394736842104,
+    "SummativeScore":47.01184210526317
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.39999714285712,40.45995428571429 ]
+    },
+    "properties": {
+    "FIELD1":11,
+    "County":"MIDDLESEX",
+    "City_id":1213,
+    "2020_tax_rate":2.5884400000000003,
+    "location":"[40.45995428571429, -74.39999714285713]",
+    "COUNTY_CODE":23,
+    "SummativeRating":50.365769230769224,
+    "SummativeScore":50.829871794871806
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.10238070175441,40.2856 ]
+    },
+    "properties": {
+    "FIELD1":12,
+    "County":"MONMOUTH",
+    "City_id":1327,
+    "2020_tax_rate":1.8898867924528306,
+    "location":"[40.2856, -74.10238070175441]",
+    "COUNTY_CODE":25,
+    "SummativeRating":56.04831081081082,
+    "SummativeScore":54.921351351351355
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.5142238095238,40.886119047619054 ]
+    },
+    "properties": {
+    "FIELD1":13,
+    "County":"MORRIS",
+    "City_id":1420,
+    "2020_tax_rate":2.3097179487179487,
+    "location":"[40.886119047619054, -74.5142238095238]",
+    "COUNTY_CODE":27,
+    "SummativeRating":71.87312499999997,
+    "SummativeScore":66.50656249999996
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.21142790697675,39.89861395348837 ]
+    },
+    "properties": {
+    "FIELD1":14,
+    "County":"OCEAN",
+    "City_id":1517,
+    "2020_tax_rate":1.8094545454545459,
+    "location":"[39.898613953488365, -74.21142790697675]",
+    "COUNTY_CODE":29,
+    "SummativeRating":37.42680412371133,
+    "SummativeScore":42.08938144329896
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.21388571428572,40.94945000000001 ]
+    },
+    "properties": {
+    "FIELD1":15,
+    "County":"PASSAIC",
+    "City_id":1608.5,
+    "2020_tax_rate":3.1260625000000006,
+    "location":"[40.949450000000006, -74.21388571428572]",
+    "COUNTY_CODE":31,
+    "SummativeRating":39.48130081300813,
+    "SummativeScore":42.42284552845528
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.35459999999998,39.620542857142866 ]
+    },
+    "properties": {
+    "FIELD1":16,
+    "County":"SALEM",
+    "City_id":1708,
+    "2020_tax_rate":3.4664000000000006,
+    "location":"[39.620542857142866, -75.35459999999999]",
+    "COUNTY_CODE":33,
+    "SummativeRating":39.46409090909091,
+    "SummativeScore":41.55772727272727
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.58056470588234,40.520626470588226 ]
+    },
+    "properties": {
+    "FIELD1":17,
+    "County":"SOMERSET",
+    "City_id":1811,
+    "2020_tax_rate":2.3388095238095237,
+    "location":"[40.52062647058823, -74.58056470588235]",
+    "COUNTY_CODE":35,
+    "SummativeRating":61.59166666666668,
+    "SummativeScore":58.92763888888888
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.64102666666666,41.094546666666666 ]
+    },
+    "properties": {
+    "FIELD1":18,
+    "County":"SUSSEX",
+    "City_id":1912.5,
+    "2020_tax_rate":2.9376249999999993,
+    "location":"[41.094546666666666, -74.64102666666666]",
+    "COUNTY_CODE":37,
+    "SummativeRating":46.30216216216216,
+    "SummativeScore":48.162162162162154
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.31702307692309,40.657738461538464 ]
+    },
+    "properties": {
+    "FIELD1":19,
+    "County":"UNION",
+    "City_id":2011,
+    "2020_tax_rate":3.6133809523809526,
+    "location":"[40.657738461538464, -74.31702307692309]",
+    "COUNTY_CODE":39,
+    "SummativeRating":53.33048611111113,
+    "SummativeScore":53.45118055555556
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.02623125000002,40.79450937499999 ]
+    },
+    "properties": {
+    "FIELD1":20,
+    "County":"WARREN",
+    "City_id":2111.7272727272725,
+    "2020_tax_rate":3.0162272727272734,
+    "location":"[40.79450937499999, -75.02623125000001]",
+    "COUNTY_CODE":41,
+    "SummativeRating":50.42242424242424,
+    "SummativeScore":50.620303030303035
+    }
+  }
+]
+}

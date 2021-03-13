@@ -56,27 +56,51 @@ info.onAdd = function(){
 info.addTo(myMap);
 
 // Use this link to get the geojson data.
-var link = "static/data/merge__nj_geojson.geojson";
+// var link = "static/data/merge__nj_geojson.geojson";
+var link = "http://data.ci.newark.nj.us/dataset/db87f66a-6d79-4933-9011-f392fdce7eb8/resource/95db8cad-3a8c-41a4-b8b1-4991990f07f3/download/njcountypolygonv2.geojson"
 
-var markerData = "static/data/final_output.json";
-var mData = d3.json(markerData, function(mData){
-console.log(mData)
+var markerData = "static/data/final_data.geojson";
+
+d3.json(markerData, function(mData){
+  // console.log(mData.features.length)
+  for (var i=0; i<mData.features.length; i++) {
+    var location = mData.features[i].geometry.coordinates;
+    console.log(location[1], location [0]);
+    // if (location){
+      L.marker([location[1], location[0]])
+      .bindPopup("<h2>"+mData.features[i].properties.County)
+      .addTo(myMap);
+
+    //   console.log(mData.features[i].geometry.coordinates[1], mData.features[i].geometry.coordinates[0])
+    
+
+  }
+
+
+
 })
 
-var counties = []
-for (var i=0; i < mData.length; i++) {
-  marker = new L.marker([County[i].lat, County[i].lng])
-    .bindPopup(mData[i])
-    .addTo(myMap)
-}
+// for (var i=0; i<markers.length; i++) {
+           
+//   var lon = markers[i][0];
+//   var lat = markers[i][1];
+//   var popupText = markers[i][2];
+  
+//    var markerLocation = new L.LatLng(lat, lon);
+//    var marker = new L.Marker(markerLocation);
+//    map.addLayer(marker);
 
+//    marker.bindPopup(popupText);
+// }
+
+// L.marker(mData.features[i].geometry.coordinates).addTo(myMap)
 
 //add all the county markers to a new layer group
-var countyLayer = L.layerGroup(counties);
+// var countyLayer = L.layerGroup(counties);
 
-var overlayMaps = {
-  Counties: countyLayer
-}
+// var overlayMaps = {
+//   Counties: countyLayer
+// }
 
 // Grabbing our GeoJSON data..
 d3.json(link, function(data) {
@@ -94,11 +118,12 @@ d3.json(link, function(data) {
   }).addTo(myMap);
 })
 
-
+// L.marker([45.52, -122.67]).addTo(myMap);
+L.marker([39.4431,-74.61701363636367])
+.bindPopup("Hi")
+.addTo(myMap)
 
 function createFeatures(data){
   // console.log(data)
   }
-
-L.control.layers(countyLayer).addTo(myMap)
 
