@@ -1,12 +1,35 @@
 function countyDepth(tax_rate){
   return tax_rate * .2
 }
+
 // Creating map object
 var myMap = L.map("map", {
   center: [40.0583, -74.4057],
   zoom: 9
  
 });
+function circleColor(){
+  var circleLocation = L.geojson([mData.features.geomtery.coordinates[1], 
+    mData.features.geomtery.coordinates[0]])
+  console.log(circleLocation)
+}
+
+//Create function for color of marker
+function circleColor(SummativeScore) {
+  if (SummativeScore <= 30) {
+      return "red";
+  } else if (SummativeScore <= 45) {
+      return "orange";
+  } else if (SummativeScore <= 60) {
+      return "yellow";
+  } else if (SummativeScore <= 75) {
+      return "green";
+  } else if (SummativeScore <= 95) {
+      return "blue"
+  } else {
+      return "purple";
+  };
+}
 
 // Adding tile layer
 L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -29,6 +52,10 @@ var layers = {
   School_Score: new L.LayerGroup()
 }
 
+var marker ={
+  radius: 15,
+  color: markerColor
+}
 
 var overlays = {
   "County:": layers.County_Name,
@@ -56,8 +83,8 @@ info.onAdd = function(){
 info.addTo(myMap);
 
 // Use this link to get the geojson data.
-// var link = "static/data/merge__nj_geojson.geojson";
-var link = "http://data.ci.newark.nj.us/dataset/db87f66a-6d79-4933-9011-f392fdce7eb8/resource/95db8cad-3a8c-41a4-b8b1-4991990f07f3/download/njcountypolygonv2.geojson"
+var link = "static/data/merge__nj_geojson.geojson";
+// var link = "http://data.ci.newark.nj.us/dataset/db87f66a-6d79-4933-9011-f392fdce7eb8/resource/95db8cad-3a8c-41a4-b8b1-4991990f07f3/download/njcountypolygonv2.geojson"
 
 var markerData = "static/data/final_data.geojson";
 
@@ -68,7 +95,8 @@ d3.json(markerData, function(mData){
     console.log(location[1], location [0]);
     // if (location){
       L.marker([location[1], location[0]])
-      .bindPopup("<h2>"+mData.features[i].properties.County)
+      .bindPopup("<h2>"+mData.features[i].properties.County+"</h2>"+"<br>"+"Summative Score" + 
+      mData.features[i].properties.SummativeRating)
       .addTo(myMap);
 
     //   console.log(mData.features[i].geometry.coordinates[1], mData.features[i].geometry.coordinates[0])
@@ -111,7 +139,7 @@ d3.json(link, function(data) {
     style: function(features){
       return{
         color: "gray",
-        fillColor: "green",
+        fillColor: "orange",
         fillOpacity:countyDepth(features.properties.tax_rate)
       }
   }
