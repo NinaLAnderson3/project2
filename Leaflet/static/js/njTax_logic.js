@@ -55,6 +55,18 @@ info.onAdd = function(){
 // //add the info legend to the map
 info.addTo(myMap);
 
+// Create a Darth Vader Icon
+var DarthVader = L.icon({
+  iconUrl: 'icon/Darth-Vader-icon.png',
+ 
+
+  iconSize:     [38, 95], // size of the icon
+  shadowSize:   [50, 64], // size of the shadow
+  iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62],  // the same for the shadow
+  popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
 // Use this link to get the geojson data.
 // var link = "static/data/merge__nj_geojson.geojson";
 var link = "http://data.ci.newark.nj.us/dataset/db87f66a-6d79-4933-9011-f392fdce7eb8/resource/95db8cad-3a8c-41a4-b8b1-4991990f07f3/download/njcountypolygonv2.geojson"
@@ -67,7 +79,7 @@ d3.json(markerData, function(mData){
     var location = mData.features[i].geometry.coordinates;
     console.log(location[1], location [0]);
     // if (location){
-      L.marker([location[1], location[0]])
+      L.marker([location[1], location[0]],{icon: DarthVader})
       .bindPopup("<h2>"+mData.features[i].properties.County)
       .addTo(myMap);
 
