@@ -55,6 +55,7 @@ function renderText(circletextGroup, newXScale, newYScale, xCol, yCol) {
         .attr("y", d => newYScale(d[yCol]));
     return circletextGroup;
 }
+var decimal_format = d3.format(".2f");
 // Function used for updating circles group with new tooltip.
 function updateToolTip(xCol, yCol, circlesGroup, textGroup) {
     // Conditional for X Axis.
@@ -62,8 +63,10 @@ function updateToolTip(xCol, yCol, circlesGroup, textGroup) {
         var xlabel = "Poverty rate: ";
     } else if (xCol === "median_hh_income") {
         var xlabel = "Median Income: "
-    } else {
+    } else if (xCol === "school_rank") {
         var xlabel = "Schoool avg. rating: "
+    } else {
+        var xlabel = "Property Tax rate: "
     }
     // Conditional for Y Axis.
     if (yCol === "total_offense") {
@@ -82,12 +85,15 @@ function updateToolTip(xCol, yCol, circlesGroup, textGroup) {
                 // All yAxis tooltip labels presented and formated as %.
                 // Display Poverty as percentage for xAxis.
                 return (`${d.county_name}<br>${xlabel} ${d[xCol]}%<br>${ylabel}${d[yCol]}<br>population: ${d.population}`);
-                } else if (xCol !== "poverty_rate" && xCol !== "median_hh_income") {
-                // Display School ranking for xAxis.
-                return (`${d.county_name}<br>${xlabel} ${d[xCol]}%<br>${ylabel}${d[yCol]}<br>population: ${d.population}`);
-                } else {
-                // Display income as percentage for xAxis.
+                } else if (xCol === "tax_rate") {
+                // Display tax rate for xAxis.
+                return (`${d.county_name}<br>${xlabel} ${decimal_format(d[xCol])}%<br>${ylabel}${d[yCol]}<br>population: ${d.population}`);
+                } else if (xCol === "median_hh_income") {
+                // Display income for xAxis.
                 return (`${d.county_name}<br>${xlabel} $${d[xCol]}<br>${ylabel}${d[yCol]}<br>population: ${d.population}`);
+                } else {
+                // Display  School ranking for xAxis.
+                return (`${d.county_name}<br>${xlabel} ${d[xCol]}<br>${ylabel}${d[yCol]}<br>population: ${d.population}`);
                 }      
         });
     circlesGroup.call(toolTip);
@@ -115,7 +121,13 @@ function updateToolTip(xCol, yCol, circlesGroup, textGroup) {
             toolTip.hide(data);
         });
     return circlesGroup;
-}
+}   
+// Hide all the cards
+    d3.selectAll('.card').each(function() {
+        if ((d3.select(this).attr('id'))!== `#${xCol}-${yCol}`){
+            d3.select(this).style("display", "none");
+        }
+    });    
     var activeCard = d3.select(`#${xCol}-${yCol}`);
     activeCard.style("display", "block");
 function makeResponsive() {
@@ -158,6 +170,7 @@ function makeResponsive() {
             data.total_offense = +data.total_offense;
             data.rate_per_100k = +data.rate_per_100k;
             data.total_arrest = +data.total_arrest;
+            data.tax_rate = +data.tax_rate;
         });
         // Create x/y linear scales.
         var xLinearScale = xScale(crimeDtata, xCol, chartWidth);
@@ -213,6 +226,12 @@ function makeResponsive() {
             .attr("value", "median_hh_income") // value to grab for event listener
             .classed("inactive", true)
             .text("Household Income (Median)");
+        var taxLabel = xLabelsGroup.append("text")
+            .attr("x", 0)
+            .attr("y", 80)
+            .attr("value", "tax_rate") // value to grab for event listener
+            .classed("inactive", true)
+            .text("Property Tax rate (%)")
         // Add y labels group and labels.
         var yLabelsGroup = chartGroup.append("g")
             .attr("transform", "rotate(-90)");
@@ -258,6 +277,9 @@ function makeResponsive() {
                     incomeLabel
                         .classed("active", false)
                         .classed("inactive", true);
+                    taxLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
                     activeCard = d3.select(`#${xCol}-${yCol}`);
                     activeCard.style("display", "block");
                 } else if (xCol === "school_rank") {
@@ -271,6 +293,25 @@ function makeResponsive() {
                     incomeLabel
                         .classed("active", false)
                         .classed("inactive", true);
+                    taxLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
+                    activeCard = d3.select(`#${xCol}-${yCol}`);
+                    activeCard.style("display", "block");
+                } else if (xCol === "median_hh_income") {
+                    activeCard.style("display", "none");
+                    povertyLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
+                    schoolLabel
+                        .classed("active", false)
+                        .classed("inactive", true)
+                    incomeLabel
+                        .classed("active", true)
+                        .classed("inactive", false);
+                    taxLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
                     activeCard = d3.select(`#${xCol}-${yCol}`);
                     activeCard.style("display", "block");
                 } else {
@@ -282,6 +323,9 @@ function makeResponsive() {
                         .classed("active", false)
                         .classed("inactive", true)
                     incomeLabel
+                        .classed("active", false)
+                        .classed("inactive", true);
+                    taxLabel
                         .classed("active", true)
                         .classed("inactive", false);
                     activeCard = d3.select(`#${xCol}-${yCol}`);

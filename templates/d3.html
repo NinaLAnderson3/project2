@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/d3Style.css') }}">
-    <title>NJ crime analysis dashboard</title>
+    <title>NJ new mover's guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   </head>
   <body class="bg-dark">
@@ -48,6 +48,7 @@
                     <li><a class="dropdown-item" href="/data_crime_detail">NJ Crime Detail Data</a></li>
                     <li><a class="dropdown-item" href="/data_poverty">NJ Poverty Data</a></li>
                     <li><a class="dropdown-item" href="/data_school">NJ School data</a></li>
+                    <li><a class="dropdown-item" href="/data_tax">NJ Tax</a></li>
                 </ul>
                 </li>
             </ul>
@@ -67,13 +68,17 @@
             <div class="card bg-light animate__animated animate__fadeIn" id="poverty_rate-total_offense">
                 <div class="card-body p-0">
                     <h5 class="card-header text-white">Poverty rate vs. Total offense</h5>
-                    <p class="card-text p-2">There is a very weak negative correlation between these two factors. We can see that the greater the poverty, the more crime is occurring.</p>
+                    <p class="card-text p-2">There is a very weak negative correlation between these two factors. We can see that the greater the poverty, the more crime is occurring. Some anomalies are there due to
+                        population size.
+                    </p>
                 </div>
             </div>
             <div class="card bg-light animate__animated animate__fadeIn" id="poverty_rate-rate_per_100k">
                 <div class="card-body p-0">
                     <h5 class="card-header text-white">Poverty rate vs. Crime rate per 100k</h5>
-                    <p class="card-text p-2">There is a weak negative correlation between these two factors. We can see that the greater the poverty, the higher the crime rate.</p>
+                    <p class="card-text p-2">There is a weak negative correlation between these two factors. We can see that the greater the poverty, the higher the crime rate.
+                        Some anomalies are there due to population size.
+                    </p>
                 </div>
             </div>
             <div class="card bg-light animate__animated animate__fadeIn" id="poverty_rate-total_arrest">
@@ -124,6 +129,28 @@
                 <div class="card-body p-0">
                     <h5 class="card-header text-white">Household Income vs. Total arrest</h5>
                     <p class="card-text p-2">There is a moderate weak negative correlation between these two factors. We can see that the greater the Household Income, the less arrests are occurring.</p>
+                </div>
+            </div>
+
+
+
+            <div class="card bg-light animate__animated animate__fadeIn" id="tax_rate-total_offense">
+                <div class="card-body p-0">
+                    <h5 class="card-header text-white">Tax rate vs. Total offense</h5>
+                    <p class="card-text p-2">There is a somewhat moderate weak positive correlation between these two factors. We can see that the greater the Tax rate, the more crime is occurring, probably because of population size.</p>
+                </div>
+            </div>
+            <div class="card bg-light animate__animated animate__fadeIn" id="tax_rate-rate_per_100k">
+                <div class="card-body p-0">
+                    <h5 class="card-header text-white">Tax rate vs. Crime rate per 100k</h5>
+                    <p class="card-text p-2">There is a moderate negative correlation between these two factors. We can see that the greater the Tax rate, the lower the crime rate. 
+                        One anomaly here is bergen county, probably because of the population size.</p>
+                </div>
+            </div>
+            <div class="card bg-light animate__animated animate__fadeIn" id="tax_rate-total_arrest">
+                <div class="card-body p-0">
+                    <h5 class="card-header text-white">Tax rate vs. Total arrest</h5>
+                    <p class="card-text p-2">There is a very weak positive correlation between these two factors. We can see that the greater the Tax rate, the more arrests are occurring, probably because of population size.</p>
                 </div>
             </div>
         </div>

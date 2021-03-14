@@ -72,6 +72,7 @@ function plotCharts(initCounty) {
 
         // get the wash frequency for gauge chart later
         var median_hh_income = individualMetadata.median_hh_income;
+        var decimal_format = d3.format(".2f");
 
         // Iterate through each key and value in the metadata
         Object.entries(individualMetadata).forEach(([key, value]) => {
@@ -86,7 +87,12 @@ function plotCharts(initCounty) {
             listItem.attr("class", "list-group-item p-1 bg-light");
 
             // add the key value pair from the metadata to the demographics list
-            listItem.text(`${key}: ${value}`);
+            if (key == 'county_name'){
+                listItem.text(`${key}: ${value}`);
+            } else {
+                listItem.text(`${key}: ${decimal_format(value)}`);
+            }
+            
 
         }); // close forEach
 
@@ -110,7 +116,7 @@ function plotCharts(initCounty) {
         // console.log(schIds);
         // console.log(schRatings);
         // console.log(schLabels);
-        // slice and reverse the arrays to get the top 10 ratings, labels and IDs
+        // slice and reverse the arrays to get the top 10 summativescores, labels and IDs
         var topschIds = schIds.slice(0, 10).reverse();
         var topschRatings = schRatings.slice(0, 10).reverse();
         var topschLabels = schLabels.slice(0, 10).reverse();
@@ -158,7 +164,7 @@ function plotCharts(initCounty) {
                 }
             },
             xaxis: {
-                title: "<b>Schoole rating <b>",
+                title: "<b>Schoole summativescore <b>",
                 color: 'black'
             },
             yaxis: {
