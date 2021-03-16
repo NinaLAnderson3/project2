@@ -248,8 +248,8 @@ def sunburst_poverty_data():
     return data_csv
 
 
-@app.route('/api/d3_zoom_sunburst')
-def d3_zoom_sunburst():
+@app.route('/api/d3_sunburst_schools')
+def d3_sunburst_schools():
     sqlite_connection = engine.connect()
 
     query = '''SELECT county_name,district_name,gradespan,school_name,rating FROM NJ_school_rating ORDER BY county_name,district_name,gradespan,school_name;'''
@@ -258,8 +258,8 @@ def d3_zoom_sunburst():
     sqlite_connection.close()
     
     data_json = {}
-    data_json["name"] = "flare"
-    data_json["description"] = "flare"
+    data_json["name"] = "school"
+    data_json["description"] = "school"
     
     counties = list(test['county_name'].unique())
     
@@ -295,24 +295,29 @@ def d3_zoom_sunburst():
         children.append(child1)
         
     data_json["children"] = children
+    with open("static/data/school.json", "w",encoding ='utf8') as outfile:  
+        json.dump(data_json, outfile, indent = 1) 
     print("Data retrieval successfull")
     if data_json:
         print("Json ready")
+    else:
+        print("Json failed!")
     return jsonify(data_json)
 
 
-app.route('/api/d3_sunburst_tax')
+@app.route('/api/d3_sunburst_tax')
 def d3_sunburst_tax():
     sqlite_connection = engine.connect()
     
-    query = '''SELECT county_name,district_name,effective_tax_rate FROM NJ_tax'''
+    query = '''SELECT DISTINCT * FROM NJ_tax'''
     test = pd.read_sql_query(query, sqlite_connection)
+    print("Query successfull")
     
     sqlite_connection.close()
     
     data_json2 = {}
-    data_json2["name"] = "flare"
-    data_json2["description"] = "flare"
+    data_json2["name"] = "tax"
+    data_json2["description"] = "tax"
     
     counties = list(test['county_name'].unique())
     
@@ -333,29 +338,91 @@ def d3_sunburst_tax():
         child1["children"] = child2_list
         children.append(child1)
     data_json2["children"] = children
+    with open("static/data/tax_sunburst.json", "w",encoding ='utf8') as outfile:  
+        json.dump(data_json2, outfile, indent = 1) 
     print("Data retrieval successfull")
     if data_json2:
         print("Json ready")
+    else:
+        print("Json failed!")
     return jsonify(data_json2)
 
-@app.route('/tax_json')
-def tax_json():
-    f = open("static/data/tax_sunburst.json")
-    data = json.load(f)
-    return data
+@app.route('/api/d3_sunburst_crime')
+def d3_sunburst_crime():
+    sqlite_connection = engine.connect()
+    
+    query = ''' SELECT * FROM (SELECT county_name, police_dept, 'murder' AS crime_type, murder AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+        UNION ALL SELECT county_name, police_dept, 'rape' AS crime_type, rape AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+        UNION ALL SELECT county_name, police_dept, 'robbery' AS crime_type, robbery AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+        UNION ALL SELECT county_name, police_dept, 'assault' AS crime_type, assault AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+        UNION ALL SELECT county_name, police_dept, 'burglary' AS crime_type, burglary AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+        UNION ALL SELECT county_name, police_dept, 'larceny' AS crime_type, larceny AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+        UNION ALL SELECT county_name, police_dept, 'auto_theft' AS crime_type, auto_theft AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0)
+        ORDER BY 1,2,3'''
+    test = pd.read_sql_query(query, sqlite_connection)
+    print("Query successfull")
+    
+    sqlite_connection.close()
+    
+    data_json3 = {}
+    data_json3["name"] = "crime"
+    data_json3["description"] = "crime"
+    
+    counties = list(test['county_name'].unique())
+    
+    children = []
+    children = []
+    for i in range(len(counties)):
+        child1 = {}
+        child1["name"] = counties[i]
+        child1["description"] = test['count'].loc[test['county_name']==counties[i]].mean()
+        police_dept = list(test['police_dept'].loc[test['county_name']==counties[i]].unique())
+        child2_list = []
+        for k in range(len(police_dept)):
+            child2 = {}
+            child2["name"] = police_dept[k]
+            child2["description"] = test['count'].loc[(test['county_name']==counties[i]) & (test['police_dept'] == police_dept[k])].mean()
+            child3_list = []
+            crime_type = list(test['crime_type'].loc[(test['county_name']==counties[i]) & (test['police_dept'] == police_dept[k])].unique())
+            for j in range(len(crime_type)):
+                for index,row in test.loc[(test['county_name']==counties[i]) & (test['police_dept'] == police_dept[k]) & (test['crime_type'] == crime_type[j])].iterrows():
+                    child3 = {}
+                    child3["name"] = row["crime_type"]
+                    child3["description"] = row["count"]
+                    child3["size"] = row["count"]
+                    child3_list.append(child3)
+                child2["children"] = child3_list
+            child2_list.append(child2)
+        child1["children"] = child2_list
+        children.append(child1)
+    data_json3["children"] = children
+    with open("static/data/crime.json", "w",encoding ='utf8') as outfile:  
+        json.dump(data_json3, outfile, indent = 1) 
+    print("Data retrieval successfull")
+    if data_json3:
+        print("Json ready")
+    else:
+        print("Json failed!")
+    return jsonify(data_json3)
+
+# @app.route('/tax_json')
+# def tax_json():
+#     f = open("static/data/tax_sunburst.json")
+#     data = json.load(f)
+#     return data
 
 
-@app.route('/school_json')
-def school_json():
-    f = open("static/data/school.json")
-    data = json.load(f)
-    return data
+# @app.route('/school_json')
+# def school_json():
+#     f = open("static/data/school.json")
+#     data = json.load(f)
+#     return data
 
-@app.route('/plotly_json')
-def plotly_json():
-    f = open("static/data/plotly.json")
-    plotly_data = json.load(f)
-    return jsonify(plotly_data)
+# @app.route('/plotly_json')
+# def plotly_json():
+#     f = open("static/data/plotly.json")
+#     plotly_data = json.load(f)
+#     return jsonify(plotly_data)
 
 @app.route('/leaflet')
 def leaflet():

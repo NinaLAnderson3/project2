@@ -1,9 +1,9 @@
 {
- "name": "flare",
- "description": "flare",
+ "name": "school",
+ "description": "school",
  "children": [
   {
-   "name": "Atlantic",
+   "name": "ATLANTIC",
    "description": 48.484375,
    "children": [
     {
@@ -591,8 +591,8 @@
    ]
   },
   {
-   "name": "Bergen",
-   "description": 53.3974358974359,
+   "name": "BERGEN",
+   "description": 53.420918367346935,
    "children": [
     {
      "name": "Allendale Public School District",
@@ -2183,12 +2183,12 @@
      "children": [
       {
        "name": "01-05",
-       "description": NaN,
+       "description": 52.5,
        "children": [
         {
          "name": "Bergen Boulevard School",
-         "description": NaN,
-         "size": NaN
+         "description": 52.5,
+         "size": 52.5
         }
        ]
       },
@@ -2659,7 +2659,7 @@
     },
     {
      "name": "Westwood Regional School District",
-     "description": 56.875,
+     "description": 57.791666666666664,
      "children": [
       {
        "name": "06-07",
@@ -2700,12 +2700,12 @@
       },
       {
        "name": "PK-12",
-       "description": 40.0,
+       "description": 45.5,
        "children": [
         {
          "name": "Westwood Junior/Senior High School",
-         "description": 40.0,
-         "size": 40.0
+         "description": 45.5,
+         "size": 45.5
         }
        ]
       }
@@ -2819,7 +2819,7 @@
    ]
   },
   {
-   "name": "Burlington",
+   "name": "BURLINGTON",
    "description": 49.61607142857143,
    "children": [
     {
@@ -3869,8 +3869,8 @@
    ]
   },
   {
-   "name": "Camden",
-   "description": 48.62019230769231,
+   "name": "CAMDEN",
+   "description": 48.576190476190476,
    "children": [
     {
      "name": "Audubon Public School Disrict",
@@ -4333,12 +4333,12 @@
       },
       {
        "name": "07-12",
-       "description": NaN,
+       "description": 44.0,
        "children": [
         {
          "name": "Gloucester City Jr. Sr. High School",
-         "description": NaN,
-         "size": NaN
+         "description": 44.0,
+         "size": 44.0
         }
        ]
       }
@@ -4970,7 +4970,7 @@
    ]
   },
   {
-   "name": "Cape May",
+   "name": "CAPE MAY",
    "description": 51.18055555555556,
    "children": [
     {
@@ -5258,7 +5258,7 @@
    ]
   },
   {
-   "name": "Charters",
+   "name": "CHARTERS",
    "description": 48.68181818181818,
    "children": [
     {
@@ -6573,7 +6573,7 @@
    ]
   },
   {
-   "name": "Cumberland",
+   "name": "CUMBERLAND",
    "description": 44.09722222222222,
    "children": [
     {
@@ -6951,8 +6951,8 @@
    ]
   },
   {
-   "name": "Essex",
-   "description": 49.614197530864196,
+   "name": "ESSEX",
+   "description": 49.62957317073171,
    "children": [
     {
      "name": "Belleville Public School District",
@@ -7165,16 +7165,16 @@
     },
     {
      "name": "East Orange School District",
-     "description": 43.01470588235294,
+     "description": 42.69117647058823,
      "children": [
       {
        "name": "06-08",
-       "description": 42.5,
+       "description": 40.666666666666664,
        "children": [
         {
          "name": "John L. Costley Middle School",
-         "description": 48.0,
-         "size": 48.0
+         "description": 42.5,
+         "size": 42.5
         },
         {
          "name": "Patrick F. Healy Middle School",
@@ -7626,7 +7626,7 @@
     },
     {
      "name": "Newark Public School District",
-     "description": 46.133720930232556,
+     "description": 46.233333333333334,
      "children": [
       {
        "name": "05-12",
@@ -7657,22 +7657,22 @@
       },
       {
        "name": "08-12",
-       "description": 47.25,
+       "description": 47.75,
        "children": [
         {
          "name": "American History High School",
-         "description": 45.0,
-         "size": 45.0
+         "description": 46.5,
+         "size": 46.5
         },
         {
          "name": "Arts High School",
-         "description": 49.5,
-         "size": 49.5
+         "description": 48.75,
+         "size": 48.75
         },
         {
          "name": "West Side High School",
-         "description": NaN,
-         "size": NaN
+         "description": 48.0,
+         "size": 48.0
         }
        ]
       },
@@ -7731,7 +7731,7 @@
       },
       {
        "name": "PK-08",
-       "description": 46.104838709677416,
+       "description": 46.1640625,
        "children": [
         {
          "name": "Abington Avenue School",
@@ -7780,8 +7780,8 @@
         },
         {
          "name": "East Ward Elementary School",
-         "description": NaN,
-         "size": NaN
+         "description": 48.0,
+         "size": 48.0
         },
         {
          "name": "First Avenue School",
@@ -7970,16 +7970,16 @@
     },
     {
      "name": "ORANGE BOARD OF EDUCATION School District",
-     "description": 52.625,
+     "description": 53.9375,
      "children": [
       {
        "name": "08-09",
-       "description": 37.0,
+       "description": 47.5,
        "children": [
         {
          "name": "Orange Preparatory Academy",
-         "description": 37.0,
-         "size": 37.0
+         "description": 47.5,
+         "size": 47.5
         }
        ]
       },
@@ -8263,7 +8263,7 @@
    ]
   },
   {
-   "name": "Gloucester",
+   "name": "GLOUCESTER",
    "description": 48.200892857142854,
    "children": [
     {
@@ -8957,7 +8957,7 @@
    ]
   },
   {
-   "name": "Hudson",
+   "name": "HUDSON",
    "description": 50.8,
    "children": [
     {
@@ -9664,7 +9664,7 @@
    ]
   },
   {
-   "name": "Hunterdon",
+   "name": "HUNTERDON",
    "description": 51.986111111111114,
    "children": [
     {
@@ -10186,7 +10186,7 @@
    ]
   },
   {
-   "name": "Mercer",
+   "name": "MERCER",
    "description": 46.314516129032256,
    "children": [
     {
@@ -10688,8 +10688,8 @@
    ]
   },
   {
-   "name": "Middlesex",
-   "description": 52.029296875,
+   "name": "MIDDLESEX",
+   "description": 51.95961538461538,
    "children": [
     {
      "name": "Carteret Public School District",
@@ -10776,7 +10776,7 @@
     },
     {
      "name": "East Brunswick Township School District",
-     "description": 55.05,
+     "description": 55.225,
      "children": [
       {
        "name": "06-07",
@@ -10791,12 +10791,12 @@
       },
       {
        "name": "08-09",
-       "description": 54.0,
+       "description": 55.75,
        "children": [
         {
          "name": "Churchill Jr High School",
-         "description": 54.0,
-         "size": 54.0
+         "description": 55.75,
+         "size": 55.75
         }
        ]
       },
@@ -11050,23 +11050,6 @@
      ]
     },
     {
-     "name": "Middlesex County Vocational and Technical School District",
-     "description": NaN,
-     "children": [
-      {
-       "name": "08-12",
-       "description": NaN,
-       "children": [
-        {
-         "name": "Middlesex County Voc Acad Allied Health & Biomedical Science",
-         "description": NaN,
-         "size": NaN
-        }
-       ]
-      }
-     ]
-    },
-    {
      "name": "Milltown School District",
      "description": 56.25,
      "children": [
@@ -11129,7 +11112,7 @@
     },
     {
      "name": "New Brunswick School District",
-     "description": 44.05555555555556,
+     "description": 44.1,
      "children": [
       {
        "name": "03-08",
@@ -11187,12 +11170,12 @@
       },
       {
        "name": "PK-06",
-       "description": NaN,
+       "description": 44.5,
        "children": [
         {
          "name": "Lincoln Elementary School",
-         "description": NaN,
-         "size": NaN
+         "description": 44.5,
+         "size": 44.5
         }
        ]
       },
@@ -11706,7 +11689,7 @@
     },
     {
      "name": "Woodbridge Township School District",
-     "description": 51.13095238095238,
+     "description": 51.02272727272727,
      "children": [
       {
        "name": "06-08",
@@ -11807,12 +11790,12 @@
       },
       {
        "name": "PK-05",
-       "description": 54.375,
+       "description": 53.25,
        "children": [
         {
          "name": "Kennedy Park Elementary School",
-         "description": NaN,
-         "size": NaN
+         "description": 48.75,
+         "size": 48.75
         },
         {
          "name": "Lynn Crest Elementary School",
@@ -11841,7 +11824,7 @@
    ]
   },
   {
-   "name": "Monmouth",
+   "name": "MONMOUTH",
    "description": 52.930672268907564,
    "children": [
     {
@@ -13162,7 +13145,7 @@
    ]
   },
   {
-   "name": "Morris",
+   "name": "MORRIS",
    "description": 56.29807692307692,
    "children": [
     {
@@ -14342,7 +14325,7 @@
    ]
   },
   {
-   "name": "Ocean",
+   "name": "OCEAN",
    "description": 50.032467532467535,
    "children": [
     {
@@ -15153,7 +15136,7 @@
    ]
   },
   {
-   "name": "Passaic",
+   "name": "PASSAIC",
    "description": 48.91346153846154,
    "children": [
     {
@@ -16033,7 +16016,7 @@
    ]
   },
   {
-   "name": "Salem",
+   "name": "SALEM",
    "description": 45.875,
    "children": [
     {
@@ -16287,7 +16270,7 @@
    ]
   },
   {
-   "name": "Somerset",
+   "name": "SOMERSET",
    "description": 54.00819672131148,
    "children": [
     {
@@ -16922,7 +16905,7 @@
    ]
   },
   {
-   "name": "Sussex",
+   "name": "SUSSEX",
    "description": 52.35344827586207,
    "children": [
     {
@@ -17373,7 +17356,7 @@
    ]
   },
   {
-   "name": "Union",
+   "name": "UNION",
    "description": 50.967948717948715,
    "children": [
     {
@@ -18372,7 +18355,7 @@
    ]
   },
   {
-   "name": "Warren",
+   "name": "WARREN",
    "description": 49.419642857142854,
    "children": [
     {

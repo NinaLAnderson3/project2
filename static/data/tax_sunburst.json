@@ -1,10 +1,10 @@
 {
- "name": "flare",
- "description": "flare",
+ "name": "tax",
+ "description": "tax",
  "children": [
   {
    "name": "ATLANTIC",
-   "description": 2.823773432948293,
+   "description": 2.8237734329482924,
    "children": [
     {
      "name": "ABSECON CITY",
@@ -125,7 +125,7 @@
   },
   {
    "name": "BERGEN",
-   "description": 2.29564881331012,
+   "description": 2.2956488133101196,
    "children": [
     {
      "name": "ALLENDALE BORO",
@@ -687,7 +687,7 @@
   },
   {
    "name": "CAMDEN",
-   "description": 3.9073231914365025,
+   "description": 3.907323191436502,
    "children": [
     {
      "name": "AUDUBON BORO",
@@ -878,7 +878,7 @@
   },
   {
    "name": "CAPE MAY",
-   "description": 1.277832389160653,
+   "description": 1.2778323891606531,
    "children": [
     {
      "name": "AVALON BORO",
@@ -1040,7 +1040,7 @@
   },
   {
    "name": "ESSEX",
-   "description": 2.9509382804356052,
+   "description": 2.950938280435606,
    "children": [
     {
      "name": "BELLEVILLE TWP",
@@ -1156,7 +1156,7 @@
   },
   {
    "name": "GLOUCESTER",
-   "description": 3.516163347110872,
+   "description": 3.5161633471108718,
    "children": [
     {
      "name": "CLAYTON BORO",
@@ -1952,7 +1952,7 @@
   },
   {
    "name": "MORRIS",
-   "description": 2.3098169121741825,
+   "description": 2.309816912174183,
    "children": [
     {
      "name": "BOONTON TOWN",
@@ -2324,7 +2324,7 @@
   },
   {
    "name": "PASSAIC",
-   "description": 3.126051942365425,
+   "description": 3.1260519423654256,
    "children": [
     {
      "name": "BLOOMINGDALE BORO",
@@ -2491,7 +2491,7 @@
   },
   {
    "name": "SOMERSET",
-   "description": 2.338860636505184,
+   "description": 2.3388606365051836,
    "children": [
     {
      "name": "BEDMINSTER TWP",
@@ -2728,7 +2728,7 @@
   },
   {
    "name": "UNION",
-   "description": 3.6132618201053024,
+   "description": 3.6132618201053015,
    "children": [
     {
      "name": "BERKELEY HEIGHTS TWP",
