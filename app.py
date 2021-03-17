@@ -18,15 +18,17 @@ population = "NJ_population"
 # --- create an instance of the Flask class ---
 app = Flask(__name__)
 
+# render index.html
 @app.route('/')
 def home():
     return render_template("index.html")
 
-
+# render d3.html 
 @app.route('/d3')
 def d3():
     return render_template("d3.html")
 
+# get data for d3 plot
 @app.route('/api/d3_data')
 def d3_data():
     sqlite_connection = engine.connect()
@@ -50,10 +52,12 @@ def d3_data():
     
     return data_csv
 
+# render plotly.html
 @app.route('/plotly')
 def plotly():
     return render_template("plotly.html")
 
+# get data for plotly plot
 @app.route('/api/plotly_data')
 def plotly_data():
     sqlite_connection = engine.connect()
@@ -77,11 +81,15 @@ def plotly_data():
     data_json["metadata"] = metadata_dict
     data_json["school"] = school_dict
     data_json["crime"] = crime_dict
+    with open("static/data/plotly.json", "w",encoding ='utf8') as outfile:  
+        json.dump(data_json, outfile, indent = 1) 
+    print("Data retrieval successfull")
     
     print("Data retrieval successfull")
     print(data_json)
     return jsonify(data_json)
 
+# get crime data for plotly sunburst
 @app.route('/api/sunburst_crime_data')
 def sunburst_crime_data():
     sqlite_connection = engine.connect()
@@ -116,6 +124,7 @@ def sunburst_crime_data():
     
     return data_csv
 
+# get tax data for plotly sunburst
 @app.route('/api/sunburst_tax_data')
 def sunburst_tax_data():
     sqlite_connection = engine.connect()
@@ -137,7 +146,7 @@ def sunburst_tax_data():
     
     return data_csv
 
-
+# get school data for plotly sunburst
 @app.route('/api/sunburst_school_data')
 def sunburst_school_data():
     sqlite_connection = engine.connect()
@@ -195,6 +204,7 @@ def sunburst_school_data():
     
     return data_csv
 
+# get population data for plotly sunburst
 @app.route('/api/sunburst_pop_data')
 def sunburst_pop_data():
     sqlite_connection = engine.connect()
@@ -216,7 +226,7 @@ def sunburst_pop_data():
     
     return data_csv
 
-
+# get median household income data for plotly sunburst
 @app.route('/api/sunburst_hi_data')
 def sunburst_hi_data():
     sqlite_connection = engine.connect()
@@ -232,6 +242,7 @@ def sunburst_hi_data():
     
     return data_csv
 
+# get poverty data for plotly sunburst
 @app.route('/api/sunburst_poverty_data')
 def sunburst_poverty_data():
     sqlite_connection = engine.connect()
@@ -247,7 +258,7 @@ def sunburst_poverty_data():
     
     return data_csv
 
-
+# get school data for d3 sunburst
 @app.route('/api/d3_sunburst_schools')
 def d3_sunburst_schools():
     sqlite_connection = engine.connect()
@@ -304,7 +315,7 @@ def d3_sunburst_schools():
         print("Json failed!")
     return jsonify(data_json)
 
-
+# get tax data for d3 sunburst
 @app.route('/api/d3_sunburst_tax')
 def d3_sunburst_tax():
     sqlite_connection = engine.connect()
@@ -347,6 +358,7 @@ def d3_sunburst_tax():
         print("Json failed!")
     return jsonify(data_json2)
 
+# get crime data for d3 sunburst
 @app.route('/api/d3_sunburst_crime')
 def d3_sunburst_crime():
     sqlite_connection = engine.connect()
@@ -411,33 +423,17 @@ def d3_sunburst_crime():
 #     data = json.load(f)
 #     return data
 
-
-# @app.route('/school_json')
-# def school_json():
-#     f = open("static/data/school.json")
-#     data = json.load(f)
-#     return data
-
-# @app.route('/plotly_json')
-# def plotly_json():
-#     f = open("static/data/plotly.json")
-#     plotly_data = json.load(f)
-#     return jsonify(plotly_data)
-
+# render leaflet.html  
 @app.route('/leaflet')
 def leaflet():
     return render_template("leaflet.html")
 
-@app.route('/api/leaflet_data')
-def leaflet_data():
-    f = open("static/data/final_data.json")
-    geojson = json.load(f)
-    return geojson
-
+# render bonus.html  
 @app.route('/bonus')
 def bonus():
     return render_template("bonus.html")
 
+# render bonus.html and get data for population
 @app.route("/data_pop")
 def data_pop():
     sqlite_connection = engine.connect()
@@ -450,6 +446,7 @@ def data_pop():
     print("Data retrieval successfull")
     return render_template("data.html", info = results, table = table)
 
+# render bonus.html and get data for crime
 @app.route("/data_crime")
 def data_crime():
     sqlite_connection = engine.connect()
@@ -462,6 +459,7 @@ def data_crime():
     print("Data retrieval successfull")
     return render_template("data.html", info = results, table = table)
 
+# render bonus.html and get data for poverty
 @app.route("/data_poverty")
 def data_poverty():
     sqlite_connection = engine.connect()
@@ -474,6 +472,7 @@ def data_poverty():
     print("Data retrieval successfull")
     return render_template("data.html", info = results, table = table)
 
+# render bonus.html and get data for school
 @app.route("/data_school")
 def data_school():
     sqlite_connection = engine.connect()
@@ -486,6 +485,7 @@ def data_school():
     print("Data retrieval successfull")
     return render_template("data.html", info = results, table = table)
 
+# render bonus.html and get data for crime detail
 @app.route("/data_crime_detail")
 def data_crime_detail():
     sqlite_connection = engine.connect()
@@ -498,6 +498,7 @@ def data_crime_detail():
     print("Data retrieval successfull")
     return render_template("data.html", info = results, table = table)
 
+# render bonus.html and get data for tax
 @app.route("/data_tax")
 def data_tax():
     sqlite_connection = engine.connect()
