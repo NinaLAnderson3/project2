@@ -57,6 +57,12 @@ function resetData() {
 
 }; // close resetData()
 
+
+
+function roundUp(num, precision) {
+    precision = Math.pow(10, precision)
+    return Math.ceil(num * precision) / precision
+  }
 // create a function to read JSON and plot charts
 function plotCharts(initCounty) {
 
@@ -88,9 +94,17 @@ function plotCharts(initCounty) {
 
             // add the key value pair from the metadata to the demographics list
             if (key == 'county_name'){
-                listItem.text(`${key}: ${value}`);
+                listItem.text(`${key}:${value}`);
+            } else if (key == 'effective_tax_rate'){
+                listItem.text(`${key}: ${decimal_format(value)}%`);
+            } else if (key == 'general_tax_rate'){
+                listItem.text(`${key}: ${decimal_format(value)}%`);
+            } else if (key == 'median_hh_income'){
+                listItem.text(`${key}: $${decimal_format(value)}`);
+            } else if (key == 'poverty_rate'){
+                listItem.text(`${key}: ${decimal_format(value)}%`);
             } else {
-                listItem.text(`${key}: ${decimal_format(value)}`);
+                listItem.text(`${key}: ${roundUp(value,0)}`);
             }
             
 
@@ -124,7 +138,7 @@ function plotCharts(initCounty) {
         // console.log(topschRatings);
         // console.log(topschLabels);
         // use the map function to store the school IDs with "SCH_ID" for labelling y-axis
-        var topschIdsFormatted = topschIds.map(d => "ID " + d);
+        var topschIdsFormatted = topschIds.map(d => "ID:" + d);
         // ----------------------------------
         // PLOT BAR CHART
         // ----------------------------------
@@ -147,10 +161,11 @@ function plotCharts(initCounty) {
         // define the plot layout
         var layoutBar = {
             height: 400,
-            width: 640,
+            width: 550,
             font: {
                 family: 'Quicksand'
             },
+            hovermode: "closest",
             hoverlabel: {
                 font: {
                     family: 'Quicksand'
@@ -164,7 +179,7 @@ function plotCharts(initCounty) {
                 }
             },
             xaxis: {
-                title: "<b>Schoole summativescore <b>",
+                title: "<b>Schoole rating <b>",
                 color: 'black'
             },
             yaxis: {

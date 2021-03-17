@@ -3,6 +3,7 @@ from flask import Flask, render_template, jsonify ,url_for
 import pandas as pd
 from sqlalchemy import create_engine
 import json
+import requests
 
 # establishing DB connection 
 database_path = "Resources/NJ_CPS.sqlite"
@@ -86,7 +87,7 @@ def plotly_data():
     print("Data retrieval successfull")
     
     print("Data retrieval successfull")
-    print(data_json)
+    # print(data_json)
     return jsonify(data_json)
 
 # get crime data for plotly sunburst
@@ -268,6 +269,8 @@ def d3_sunburst_schools():
     
     sqlite_connection.close()
     
+    print("Query successfull")
+    
     data_json = {}
     data_json["name"] = "school"
     data_json["description"] = "school"
@@ -427,6 +430,49 @@ def d3_sunburst_crime():
 @app.route('/leaflet')
 def leaflet():
     return render_template("leaflet.html")
+
+
+@app.route('/api/leaflet_data')
+def leaflet_data():
+    #  SQLite DB creation and establishing connection
+    database_path = "Resources/NJ_CPS.sqlite"
+    engine = create_engine(f"sqlite:///{database_path}", echo=True)
+
+
+    sqlite_connection = engine.connect()
+    print("Data retrieval successfull")
+    query = '''SELECT T1.*, T2.school_rating, T3.tax_rate, T4.poverty_rate, T5.median_hh_income, T6.population
+            FROM
+            (SELECT county_name, total as crime_rate from NJ_crime WHERE report_type = 'Rate Per 100,000') AS T1
+            INNER JOIN (SELECT county_name, AVG(rating) AS school_rating FROM NJ_school_rating  GROUP BY 1) AS T2 
+            ON T1.county_name = T2.county_name
+            INNER JOIN (SELECT county_name, AVG(effective_tax_rate) AS tax_rate FROM NJ_tax GROUP BY 1) AS T3
+            ON T1.county_name = T3.county_name
+            INNER JOIN (SELECT county_name, AVG(poverty_rate) AS poverty_rate FROM NJ_poverty GROUP BY 1) AS T4
+            ON T1.county_name = T4.county_name
+            INNER JOIN (SELECT county_name, AVG(median_hh_income) AS median_hh_income FROM NJ_poverty GROUP BY 1) AS T5
+            ON T1.county_name = T5.county_name
+            INNER JOIN (SELECT county_name, SUM(population) AS population FROM NJ_population GROUP BY 1) AS T6
+            ON T1.county_name = T6.county_name
+    '''
+    test = pd.read_sql_query(query, sqlite_connection)
+
+    geojson_url = 'https://opendata.arcgis.com/datasets/5f45e1ece6e14ef5866974a7b57d3b95_1.geojson'
+    geojson = requests.get(geojson_url).json()
+    print("Geojson retrieval successfull")
+
+    for i in range(len(geojson['features'])):
+        county = geojson['features'][i]['properties']['COUNTY']
+        geojson['features'][i]['properties']['crime_rate'] = test['crime_rate'].loc[test['county_name']==county].item()
+        geojson['features'][i]['properties']['school_rating'] = test['school_rating'].loc[test['county_name']==county].item()
+        geojson['features'][i]['properties']['tax_rate'] = test['tax_rate'].loc[test['county_name']==county].item()
+        geojson['features'][i]['properties']['poverty_rate'] = test['poverty_rate'].loc[test['county_name']==county].item()
+        geojson['features'][i]['properties']['median_hh_income'] = test['median_hh_income'].loc[test['county_name']==county].item()
+        geojson['features'][i]['properties']['population'] = test['crime_rate'].loc[test['county_name']==county].item()
+    print("Geojson modification successfull")
+    with open("static/data/final.geojson", "w",encoding ='utf8') as outfile:  
+        json.dump(geojson, outfile) 
+    return jsonify(geojson)
 
 # render bonus.html  
 @app.route('/bonus')

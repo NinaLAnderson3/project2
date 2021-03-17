@@ -19,7 +19,7 @@ function countyDepth(tax_rate){
 
 
   // Use this link to get the geojson data.
-  var link = "static/data/final.geojson";
+  var link = "api/leaflet_data";
   // Grabbing our GeoJSON data..
   d3.json(link, function(data) {
     // createFeatures(data.features);
