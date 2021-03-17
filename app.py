@@ -557,5 +557,76 @@ def data_tax():
     print("Data retrieval successfull")
     return render_template("data.html", info = results, table = table)
 
+# render filter.html  
+@app.route('/filter')
+def filter():
+    return render_template("filter.html")
+
+# get data from population for filtering
+@app.route("/api/data_pop_filter")
+def data_pop_filter():
+    sqlite_connection = engine.connect()
+    query = "SELECT * from NJ_population"
+    df = pd.read_sql(query, sqlite_connection)
+    sqlite_connection.close()
+    data_csv = df.to_csv(header=True, index = False, encoding='utf-8')  
+    print("Data retrieval successfull")
+    return data_csv
+
+# get data from poverty for filtering
+@app.route("/api/data_pov_filter")
+def data_pov_filter():
+    sqlite_connection = engine.connect()
+    query = "SELECT * from NJ_poverty"
+    df = pd.read_sql(query, sqlite_connection)
+    sqlite_connection.close()
+    data_csv = df.to_csv(header=True, index = False, encoding='utf-8')  
+    print("Data retrieval successfull")
+    return data_csv
+
+# get data from tax for filtering
+@app.route("/api/data_tax_filter")
+def data_tax_filter():
+    sqlite_connection = engine.connect()
+    query = "SELECT * from NJ_tax"
+    df = pd.read_sql(query, sqlite_connection)
+    sqlite_connection.close()
+    data_csv = df.to_csv(header=True, index = False, encoding='utf-8')  
+    print("Data retrieval successfull")
+    return data_csv
+
+# get data from crime for filtering
+@app.route("/api/data_crime_filter")
+def data_crime_filter():
+    sqlite_connection = engine.connect()
+    query = "SELECT * from NJ_crime"
+    df = pd.read_sql(query, sqlite_connection)
+    sqlite_connection.close()
+    data_csv = df.to_csv(header=True, index = False, encoding='utf-8')  
+    print("Data retrieval successfull")
+    return data_csv
+
+# get data from crime detail for filtering
+@app.route("/api/data_crime_det_filter")
+def data_crime_det_filter():
+    sqlite_connection = engine.connect()
+    query = "SELECT * from NJ_crime_detail"
+    df = pd.read_sql(query, sqlite_connection)
+    sqlite_connection.close()
+    data_csv = df.to_csv(header=True, index = False, encoding='utf-8')  
+    print("Data retrieval successfull")
+    return data_csv
+
+# get data from school for filtering
+@app.route("/api/data_school_filter")
+def data_school_filter():
+    sqlite_connection = engine.connect()
+    query = "SELECT * from NJ_school_rating"
+    df = pd.read_sql(query, sqlite_connection)
+    sqlite_connection.close()
+    data_csv = df.to_csv(header=True, index = False, encoding='utf-8')  
+    print("Data retrieval successfull")
+    return data_csv
+
 if __name__ == "__main__":
     app.run(debug = True)

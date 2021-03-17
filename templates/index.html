@@ -45,6 +45,7 @@
                     <li><a class="dropdown-item" href="/data_poverty">NJ Poverty Data</a></li>
                     <li><a class="dropdown-item" href="/data_school">NJ School data</a></li>
                     <li><a class="dropdown-item" href="/data_tax">NJ Tax</a></li>
+                    <li><a class="dropdown-item" href="/filter">Filter</a></li>
                 </ul>
                 </li>
             </ul>
@@ -271,7 +272,7 @@
                             </div>
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
-                                <a href="https://animate.style/" target="_blank"><img class="img-fluid img-center viz-box" src="https://animate.style/img/animatecss-opengraph.jpg" title="animate" width="100"></a>
+                                <a href="https://handsontable.com/docs/8.3.2/tutorial-introduction.html" target="_blank"><img class="img-fluid img-center viz-box" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdUg6VEVtBFf7Rl1E9uc8BpfPM8qidk5y_cg&usqp=CAU" title="handsontable" width="100"></a>
                             </div>
                         </div>
                     </div> 
@@ -287,10 +288,10 @@
             <div class = "col-md-2"></div>
             <div class = "col-md-2"></div>
             <div class = "col-md-2">
-                <button onclick="bottomFunction()" id="myBtn3" title="Go to top">Bottom of the code</button>
+                <button onclick="bottomFunction()" id="myBtn3" title="Go to bottom of the code">Bottom of the code</button>
             </div>
-            <div class = "col-md-4 offset-md-4"">
-                <button onclick="topFunction2()" id="myBtn2" title="Go to top">Top of the code</button>
+            <div class = "col-md-4 offset-md-4">
+                <button onclick="topFunction2()" id="myBtn2" title="Go to top of the code">Top of the code</button>
             </div>
         </div>
         <footer class="mastfoot mt-auto text-center text-white">
@@ -350,17 +351,12 @@
             mybutton.style.display = "block";
             mybutton2.style.display = "none";
             mybutton3.style.display = "none";
-        } else if ((document.body.scrollTop > 2000 && document.body.scrollTop < 23000) || (document.documentElement.scrollTop > 2000 && document.documentElement.scrollTop < 23000)) {
-            mybutton.style.display = "none";
+        } else if ((document.body.scrollTop > 2000 && document.body.scrollTop < 15000) || (document.documentElement.scrollTop > 2000 && document.documentElement.scrollTop < 15000)) {
+            mybutton.style.display = "block";
             mybutton2.style.display = "block";
             mybutton3.style.display = "block";
-        } else if ((document.body.scrollTop > 19000) || (document.documentElement.scrollTop > 19000)) {
+        } else {
             mybutton.style.display = "block";
-            mybutton2.style.display = "none";
-            mybutton3.style.display = "none";
-        }
-         else {
-            mybutton.style.display = "none";
             mybutton2.style.display = "none";
             mybutton3.style.display = "none";
         }

@@ -40,7 +40,7 @@ function init() {
 
 // --------------------------------------------------------------------------
 function plotCharts1(api1){
-  Plotly.d3.csv(api1, function(err, rows){
+  d3.csv(api1, function(err, rows){
     if (err) throw err;
     function unpack(rows, key) {
   return rows.map(function(row) { return row[key]; });
@@ -76,7 +76,7 @@ function plotCharts1(api1){
 
 // ----------------------------------------------------------------------------
 function plotCharts2(api2){
-  Plotly.d3.csv(api2, function(err, rows){
+  d3.csv(api2, function(err, rows){
     if (err) throw err;
     function unpack(rows, key) {
   return rows.map(function(row) { return row[key]; });
