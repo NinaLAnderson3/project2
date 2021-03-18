@@ -33,6 +33,16 @@ li {
     border-radius: 5px;
 }
 
+.image-center {
+  text-align:center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 750px;
+  object-fit: contain;
+}
+
 #myBtn {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
