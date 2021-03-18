@@ -1,2 +1,4 @@
-# project2
-Back Benchers 2 - Project 2 
+# Project 2 - Back Benchers
+
+### Our Members
+![Intro](ScreenShots/intro.png)
