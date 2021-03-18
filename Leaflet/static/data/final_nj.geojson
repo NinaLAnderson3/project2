@@ -1,0 +1,320 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.61701364,39.4431 ]
+    },
+    "properties": {
+    "FIELD1":0,
+    "County":"ATLANTIC",
+    "Crime_Count":227.93809523809526,
+    "tax_rate":2.8237826089999998,
+    "SummativeRating":31.64016949,
+    "SummativeScore":37.06915254
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.04464262,40.92987705 ]
+    },
+    "properties": {
+    "FIELD1":1,
+    "County":"BERGEN",
+    "Crime_Count":299.97836134453763,
+    "tax_rate":2.295671429,
+    "SummativeRating":69.27294372,
+    "SummativeScore":64.97935065
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.76062222,39.98640556 ]
+    },
+    "properties": {
+    "FIELD1":2,
+    "County":"BURLINGTON",
+    "Crime_Count":116.53392857142856,
+    "tax_rate":2.74475,
+    "SummativeRating":45.2315,
+    "SummativeScore":46.8643
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.03034749999999,39.866367499999996 ]
+    },
+    "properties": {
+    "FIELD1":3,
+    "County":"CAMDEN",
+    "Crime_Count":260.53836734693886,
+    "tax_rate":3.90727027,
+    "SummativeRating":39.01705426,
+    "SummativeScore":41.72379845
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.83048636,39.05300909 ]
+    },
+    "properties": {
+    "FIELD1":4,
+    "County":"CAPE MAY",
+    "Crime_Count":560.5173469387755,
+    "tax_rate":1.27775,
+    "SummativeRating":33.19409091,
+    "SummativeScore":38.47136364
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.14281,39.40166 ]
+    },
+    "properties": {
+    "FIELD1":5,
+    "County":"CUMBERLAND",
+    "Crime_Count":303.3607142857144,
+    "tax_rate":3.165428571,
+    "SummativeRating":18.81473684,
+    "SummativeScore":26.44684211
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.23671818,40.80367273 ]
+    },
+    "properties": {
+    "FIELD1":6,
+    "County":"ESSEX",
+    "Crime_Count":125.6987012987013,
+    "tax_rate":2.950909091,
+    "SummativeRating":44.527326200000005,
+    "SummativeScore":46.06614973
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.14989474,39.75397368 ]
+    },
+    "properties": {
+    "FIELD1":7,
+    "County":"GLOUCESTER",
+    "Crime_Count":139.12083333333334,
+    "tax_rate":3.5162083330000002,
+    "SummativeRating":44.75411765,
+    "SummativeScore":46.80264706
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.07581,40.75011 ]
+    },
+    "properties": {
+    "FIELD1":8,
+    "County":"HUDSON",
+    "Crime_Count":153.0857142857143,
+    "tax_rate":2.0743333330000002,
+    "SummativeRating":43.17176471,
+    "SummativeScore":46.07901961
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.9402,40.58042727 ]
+    },
+    "properties": {
+    "FIELD1":9,
+    "County":"HUNTERDON",
+    "Crime_Count":44.05446428571428,
+    "tax_rate":2.679115385,
+    "SummativeRating":61.64925,
+    "SummativeScore":58.4345
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.67112308,40.26576923 ]
+    },
+    "properties": {
+    "FIELD1":10,
+    "County":"MERCER",
+    "Crime_Count":103.07261904761903,
+    "tax_rate":3.030166667,
+    "SummativeRating":45.80394737,
+    "SummativeScore":47.01184211
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.39999714,40.45995429 ]
+    },
+    "properties": {
+    "FIELD1":11,
+    "County":"MIDDLESEX",
+    "Crime_Count":101.45885714285716,
+    "tax_rate":2.5884400000000003,
+    "SummativeRating":50.36576923,
+    "SummativeScore":50.82987179
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.1023807,40.2856 ]
+    },
+    "properties": {
+    "FIELD1":12,
+    "County":"MONMOUTH",
+    "Crime_Count":160.86909620991256,
+    "tax_rate":1.889886792,
+    "SummativeRating":56.04831081,
+    "SummativeScore":54.92135135
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.51422381,40.88611905 ]
+    },
+    "properties": {
+    "FIELD1":13,
+    "County":"MORRIS",
+    "Crime_Count":73.95860805860808,
+    "tax_rate":2.309717949,
+    "SummativeRating":71.873125,
+    "SummativeScore":66.5065625
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.21142791,39.89861395 ]
+    },
+    "properties": {
+    "FIELD1":14,
+    "County":"OCEAN",
+    "Crime_Count":175.74330357142847,
+    "tax_rate":1.809454545,
+    "SummativeRating":37.42680412,
+    "SummativeScore":42.08938144
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.21388571,40.94945 ]
+    },
+    "properties": {
+    "FIELD1":15,
+    "County":"PASSAIC",
+    "Crime_Count":110.53193277310923,
+    "tax_rate":3.1260625,
+    "SummativeRating":39.48130081,
+    "SummativeScore":42.42284553
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.3546,39.62054286 ]
+    },
+    "properties": {
+    "FIELD1":16,
+    "County":"SALEM",
+    "Crime_Count":204.8476190476191,
+    "tax_rate":3.4664,
+    "SummativeRating":39.46409091,
+    "SummativeScore":41.55772727
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.58056471,40.52062647 ]
+    },
+    "properties": {
+    "FIELD1":17,
+    "County":"SOMERSET",
+    "Crime_Count":96.31428571428575,
+    "tax_rate":2.338809524,
+    "SummativeRating":61.59166667,
+    "SummativeScore":58.92763889
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.64102667,41.09454667 ]
+    },
+    "properties": {
+    "FIELD1":18,
+    "County":"SUSSEX",
+    "Crime_Count":46.2940476190476,
+    "tax_rate":2.937625,
+    "SummativeRating":46.30216216,
+    "SummativeScore":48.16216216
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -74.31702308,40.65773846 ]
+    },
+    "properties": {
+    "FIELD1":19,
+    "County":"UNION",
+    "Crime_Count":117.30340136054423,
+    "tax_rate":3.613380952,
+    "SummativeRating":53.33048611,
+    "SummativeScore":53.45118056
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -75.02623125,40.79450937 ]
+    },
+    "properties": {
+    "FIELD1":20,
+    "County":"WARREN",
+    "Crime_Count":114.53877551020406,
+    "tax_rate":3.016227273,
+    "SummativeRating":50.42242424,
+    "SummativeScore":50.62030303
+    }
+  }
+]
+}
