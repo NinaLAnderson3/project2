@@ -112,9 +112,9 @@ function createMap(njCounties) {
   //     createFeatures(data.features);
   //   });
     
-  function createFeatures(earthquakeData) {
-    console.log(earthquakeData);
-    var njCounties = L.geoJSON(earthquakeData, {
+  function createFeatures(schoolMap) {
+    console.log(schoolMap);
+    var njCounties = L.geoJSON(schoolData, {
       // Define a function we want to run once for each feature in the features array
       // Give each feature a popup describing the place and time of the earthquake
      onEachFeature : function (feature, layer) {

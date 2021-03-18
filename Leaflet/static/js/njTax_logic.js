@@ -8,28 +8,27 @@ var myMap = L.map("map", {
   zoom: 9
  
 });
-function circleColor(){
-  var circleLocation = L.geojson([mData.features.geomtery.coordinates[1], 
+function markerColor(){
+  var location = L.geojson([mData.features.geomtery.coordinates[1], 
     mData.features.geomtery.coordinates[0]])
   console.log(circleLocation)
 }
 
 //Create function for color of marker
-function circleColor(SummativeScore) {
-  if (SummativeScore <= 30) {
+function markerColor(SummativeScore) {
+  if (SummativeScore <= 45) {
       return "red";
-  } else if (SummativeScore <= 45) {
-      return "orange";
-  } else if (SummativeScore <= 60) {
+  } else if (SummativeScore <= 55) {
       return "yellow";
   } else if (SummativeScore <= 75) {
-      return "green";
-  } else if (SummativeScore <= 95) {
-      return "blue"
-  } else {
+      return "blue";
+  } else if (SummativeScore <= 85) {
       return "purple";
+  }  else {
+      return "green";
   };
 }
+
 
 // Adding tile layer
 L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -41,27 +40,23 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: API_KEY
 }).addTo(myMap)
 
-function markerColor(SummativeScore){
-  return SummativeScore*10;
-}
+// function markerColor(SummativeScore){
+//   return SummativeScore*10;
+// }
 
 var layers = {
   County_Name: new L.LayerGroup(),
   Tax_rate: new L.LayerGroup(),
   School_Rating: new L.LayerGroup(),
-  School_Score: new L.LayerGroup()
+  Crime_counts: new L.LayerGroup(),
 }
 
-var marker ={
-  radius: 15,
-  color: markerColor
-}
 
 var overlays = {
   "County:": layers.County_Name,
   "Tax Rate:": layers.Tax_rate,
   "School Rating": layers.School_Rating,
-  "School Score": layers.School_Score
+  "Crime Counts": layers.Crime_counts
 
 };
 
@@ -82,19 +77,45 @@ info.onAdd = function(){
 // //add the info legend to the map
 info.addTo(myMap);
 
+//create icons
+// var icons = {
+//   County_Name: L.ExtraMarkers.icon({
+//   icon:"ion-settings",
+//   iconColor:"white",
+//   markerColor: "yellow",
+//   shape: "star"
+// }),
+
+// Tax_rate: L.ExtraMarkers.icon({
+  
+// })
+
+
+// }
+
 // Use this link to get the geojson data.
 var link = "static/data/merge__nj_geojson.geojson";
-// var link = "http://data.ci.newark.nj.us/dataset/db87f66a-6d79-4933-9011-f392fdce7eb8/resource/95db8cad-3a8c-41a4-b8b1-4991990f07f3/download/njcountypolygonv2.geojson"
 
-var markerData = "static/data/final_data.geojson";
+var markerData = "static/data/final_nj.geojson";
 
 d3.json(markerData, function(mData){
   // console.log(mData.features.length)
   for (var i=0; i<mData.features.length; i++) {
     var location = mData.features[i].geometry.coordinates;
-    console.log(location[1], location [0]);
+    var rating = mData.features[i].properties.SummativeRating;
+    // console.log(location[1], location [0]);
+    console.log(rating)
     // if (location){
+<<<<<<< HEAD
       L.circleColor([location[1], location[0]])
+=======
+      L.circleMarker([location[1], location[0]], {
+        stroke: true,
+        fillOpacity: 1,
+        color: "black",
+        fillColor: markerColor(rating),
+        radius: 10})
+>>>>>>> 40c9758ce8f74d7f6237b346a15d101000e67a0a
       .bindPopup("<h2>"+mData.features[i].properties.County+"</h2>"+"<br>"+"Summative Score" + 
       mData.features[i].properties.SummativeRating)
       .addTo(myMap);
@@ -107,28 +128,6 @@ d3.json(markerData, function(mData){
 
 
 })
-
-// for (var i=0; i<markers.length; i++) {
-           
-//   var lon = markers[i][0];
-//   var lat = markers[i][1];
-//   var popupText = markers[i][2];
-  
-//    var markerLocation = new L.LatLng(lat, lon);
-//    var marker = new L.Marker(markerLocation);
-//    map.addLayer(marker);
-
-//    marker.bindPopup(popupText);
-// }
-
-// L.marker(mData.features[i].geometry.coordinates).addTo(myMap)
-
-//add all the county markers to a new layer group
-// var countyLayer = L.layerGroup(counties);
-
-// var overlayMaps = {
-//   Counties: countyLayer
-// }
 
 // Grabbing our GeoJSON data..
 d3.json(link, function(data) {
@@ -147,9 +146,9 @@ d3.json(link, function(data) {
 })
 
 // L.marker([45.52, -122.67]).addTo(myMap);
-L.marker([39.4431,-74.61701363636367])
-.bindPopup("Hi")
-.addTo(myMap)
+// L.marker([39.4431,-74.61701363636367])
+// .bindPopup("Hi")
+// .addTo(myMap)
 
 function createFeatures(data){
   // console.log(data)
