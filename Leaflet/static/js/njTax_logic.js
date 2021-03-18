@@ -94,7 +94,7 @@ d3.json(markerData, function(mData){
     var location = mData.features[i].geometry.coordinates;
     console.log(location[1], location [0]);
     // if (location){
-      L.marker([location[1], location[0]])
+      L.circleColor([location[1], location[0]])
       .bindPopup("<h2>"+mData.features[i].properties.County+"</h2>"+"<br>"+"Summative Score" + 
       mData.features[i].properties.SummativeRating)
       .addTo(myMap);
