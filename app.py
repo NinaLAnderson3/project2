@@ -262,163 +262,181 @@ def sunburst_poverty_data():
 # get school data for d3 sunburst
 @app.route('/api/d3_sunburst_schools')
 def d3_sunburst_schools():
-    sqlite_connection = engine.connect()
+    f = open("static/data/school.json")
+    data = json.load(f)
+    return data
 
-    query = '''SELECT county_name,district_name,gradespan,school_name,rating FROM NJ_school_rating ORDER BY county_name,district_name,gradespan,school_name;'''
-    test = pd.read_sql_query(query, sqlite_connection)
+# @app.route('/api/d3_sunburst_schools')
+# def d3_sunburst_schools():
+#     sqlite_connection = engine.connect()
+
+#     query = '''SELECT county_name,district_name,gradespan,school_name,rating FROM NJ_school_rating ORDER BY county_name,district_name,gradespan,school_name;'''
+#     test = pd.read_sql_query(query, sqlite_connection)
     
-    sqlite_connection.close()
+#     sqlite_connection.close()
     
-    print("Query successfull")
+#     print("Query successfull")
     
-    data_json = {}
-    data_json["name"] = "school"
-    data_json["description"] = "school"
+#     data_json = {}
+#     data_json["name"] = "school"
+#     data_json["description"] = "school"
     
-    counties = list(test['county_name'].unique())
+#     counties = list(test['county_name'].unique())
     
-    children = []
-    for i in range(len(counties)):
-        child1 = {}
-        child1["name"] = counties[i]
-        child1["description"] = test['rating'].loc[test['county_name']==counties[i]].mean()
-        district = list(test['district_name'].loc[test['county_name']==counties[i]].unique())
-        child2_list = []
-        for k in range(len(district)):
-            child2 = {}
-            child2["name"] = district[k]
-            child2["description"] = test['rating'].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].mean()
-            child3_list = []
-            gradespan = list(test['gradespan'].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].unique())
-            for j in range(len(gradespan)):
-                child3 = {}
-                child3["name"] = gradespan[j]
-                child3["description"] = test["rating"].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k]) & (test['gradespan'] == gradespan[j])].mean()
-                child4_list = []
-                for index,row in test.loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k]) & (test['gradespan'] == gradespan[j])].iterrows():
-                    child4 = {}
-                    child4["name"] = row["school_name"]
-                    child4["description"] = row["rating"]
-                    child4["size"] = row["rating"]
-                    child4_list.append(child4)
-                child3["children"] = child4_list
-                child3_list.append(child3)
-            child2["children"] = child3_list
-            child2_list.append(child2)
-        child1["children"] = child2_list
-        children.append(child1)
+#     children = []
+#     for i in range(len(counties)):
+#         child1 = {}
+#         child1["name"] = counties[i]
+#         child1["description"] = test['rating'].loc[test['county_name']==counties[i]].mean()
+#         district = list(test['district_name'].loc[test['county_name']==counties[i]].unique())
+#         child2_list = []
+#         for k in range(len(district)):
+#             child2 = {}
+#             child2["name"] = district[k]
+#             child2["description"] = test['rating'].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].mean()
+#             child3_list = []
+#             gradespan = list(test['gradespan'].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].unique())
+#             for j in range(len(gradespan)):
+#                 child3 = {}
+#                 child3["name"] = gradespan[j]
+#                 child3["description"] = test["rating"].loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k]) & (test['gradespan'] == gradespan[j])].mean()
+#                 child4_list = []
+#                 for index,row in test.loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k]) & (test['gradespan'] == gradespan[j])].iterrows():
+#                     child4 = {}
+#                     child4["name"] = row["school_name"]
+#                     child4["description"] = row["rating"]
+#                     child4["size"] = row["rating"]
+#                     child4_list.append(child4)
+#                 child3["children"] = child4_list
+#                 child3_list.append(child3)
+#             child2["children"] = child3_list
+#             child2_list.append(child2)
+#         child1["children"] = child2_list
+#         children.append(child1)
         
-    data_json["children"] = children
-    with open("static/data/school.json", "w",encoding ='utf8') as outfile:  
-        json.dump(data_json, outfile, indent = 1) 
-    print("Data retrieval successfull")
-    if data_json:
-        print("Json ready")
-    else:
-        print("Json failed!")
-    return jsonify(data_json)
+#     data_json["children"] = children
+#     with open("static/data/school.json", "w",encoding ='utf8') as outfile:  
+#         json.dump(data_json, outfile, indent = 1) 
+#     print("Data retrieval successfull")
+#     if data_json:
+#         print("Json ready")
+#     else:
+#         print("Json failed!")
+#     return jsonify(data_json)
 
 # get tax data for d3 sunburst
 @app.route('/api/d3_sunburst_tax')
 def d3_sunburst_tax():
-    sqlite_connection = engine.connect()
+    f = open("static/data/tax_sunburst.json")
+    data = json.load(f)
+    return data
+
+# @app.route('/api/d3_sunburst_tax')
+# def d3_sunburst_tax():
+#     sqlite_connection = engine.connect()
     
-    query = '''SELECT DISTINCT * FROM NJ_tax'''
-    test = pd.read_sql_query(query, sqlite_connection)
-    print("Query successfull")
+#     query = '''SELECT DISTINCT * FROM NJ_tax'''
+#     test = pd.read_sql_query(query, sqlite_connection)
+#     print("Query successfull")
     
-    sqlite_connection.close()
+#     sqlite_connection.close()
     
-    data_json2 = {}
-    data_json2["name"] = "tax"
-    data_json2["description"] = "tax"
+#     data_json2 = {}
+#     data_json2["name"] = "tax"
+#     data_json2["description"] = "tax"
     
-    counties = list(test['county_name'].unique())
+#     counties = list(test['county_name'].unique())
     
-    children = []
-    for i in range(len(counties)):
-        child1 = {}
-        child1["name"] = counties[i]
-        child1["description"] = test['effective_tax_rate'].loc[test['county_name']==counties[i]].mean()
-        district = list(test['district_name'].loc[test['county_name']==counties[i]].unique())
-        child2_list = []
-        for k in range(len(district)):
-            for index,row in test.loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].iterrows():
-                child2 = {}
-                child2["name"] = row["district_name"]
-                child2["description"] = row["effective_tax_rate"]
-                child2["size"] = row["effective_tax_rate"]
-                child2_list.append(child2)
-        child1["children"] = child2_list
-        children.append(child1)
-    data_json2["children"] = children
-    with open("static/data/tax_sunburst.json", "w",encoding ='utf8') as outfile:  
-        json.dump(data_json2, outfile, indent = 1) 
-    print("Data retrieval successfull")
-    if data_json2:
-        print("Json ready")
-    else:
-        print("Json failed!")
-    return jsonify(data_json2)
+#     children = []
+#     for i in range(len(counties)):
+#         child1 = {}
+#         child1["name"] = counties[i]
+#         child1["description"] = test['effective_tax_rate'].loc[test['county_name']==counties[i]].mean()
+#         district = list(test['district_name'].loc[test['county_name']==counties[i]].unique())
+#         child2_list = []
+#         for k in range(len(district)):
+#             for index,row in test.loc[(test['county_name']==counties[i]) & (test['district_name'] == district[k])].iterrows():
+#                 child2 = {}
+#                 child2["name"] = row["district_name"]
+#                 child2["description"] = row["effective_tax_rate"]
+#                 child2["size"] = row["effective_tax_rate"]
+#                 child2_list.append(child2)
+#         child1["children"] = child2_list
+#         children.append(child1)
+#     data_json2["children"] = children
+#     with open("static/data/tax_sunburst.json", "w",encoding ='utf8') as outfile:  
+#         json.dump(data_json2, outfile, indent = 1) 
+#     print("Data retrieval successfull")
+#     if data_json2:
+#         print("Json ready")
+#     else:
+#         print("Json failed!")
+#     return jsonify(data_json2)
 
 # get crime data for d3 sunburst
 @app.route('/api/d3_sunburst_crime')
 def d3_sunburst_crime():
-    sqlite_connection = engine.connect()
+    f = open("static/data/crime.json")
+    data = json.load(f)
+    return data
+
+# @app.route('/api/d3_sunburst_crime')
+# def d3_sunburst_crime():
+#     sqlite_connection = engine.connect()
     
-    query = ''' SELECT * FROM (SELECT county_name, police_dept, 'murder' AS crime_type, murder AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
-        UNION ALL SELECT county_name, police_dept, 'rape' AS crime_type, rape AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
-        UNION ALL SELECT county_name, police_dept, 'robbery' AS crime_type, robbery AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
-        UNION ALL SELECT county_name, police_dept, 'assault' AS crime_type, assault AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
-        UNION ALL SELECT county_name, police_dept, 'burglary' AS crime_type, burglary AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
-        UNION ALL SELECT county_name, police_dept, 'larceny' AS crime_type, larceny AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
-        UNION ALL SELECT county_name, police_dept, 'auto_theft' AS crime_type, auto_theft AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0)
-        ORDER BY 1,2,3'''
-    test = pd.read_sql_query(query, sqlite_connection)
-    print("Query successfull")
+#     query = ''' SELECT * FROM (SELECT county_name, police_dept, 'murder' AS crime_type, murder AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+#         UNION ALL SELECT county_name, police_dept, 'rape' AS crime_type, rape AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+#         UNION ALL SELECT county_name, police_dept, 'robbery' AS crime_type, robbery AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+#         UNION ALL SELECT county_name, police_dept, 'assault' AS crime_type, assault AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+#         UNION ALL SELECT county_name, police_dept, 'burglary' AS crime_type, burglary AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+#         UNION ALL SELECT county_name, police_dept, 'larceny' AS crime_type, larceny AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0
+#         UNION ALL SELECT county_name, police_dept, 'auto_theft' AS crime_type, auto_theft AS count FROM NJ_crime_detail  WHERE report_type = 'Rate Per 100,000' AND total <> 0)
+#         ORDER BY 1,2,3'''
+#     test = pd.read_sql_query(query, sqlite_connection)
+#     print("Query successfull")
     
-    sqlite_connection.close()
+#     sqlite_connection.close()
     
-    data_json3 = {}
-    data_json3["name"] = "crime"
-    data_json3["description"] = "crime"
+#     data_json3 = {}
+#     data_json3["name"] = "crime"
+#     data_json3["description"] = "crime"
     
-    counties = list(test['county_name'].unique())
+#     counties = list(test['county_name'].unique())
     
-    children = []
-    children = []
-    for i in range(len(counties)):
-        child1 = {}
-        child1["name"] = counties[i]
-        child1["description"] = test['count'].loc[test['county_name']==counties[i]].mean()
-        police_dept = list(test['police_dept'].loc[test['county_name']==counties[i]].unique())
-        child2_list = []
-        for k in range(len(police_dept)):
-            child2 = {}
-            child2["name"] = police_dept[k]
-            child2["description"] = test['count'].loc[(test['county_name']==counties[i]) & (test['police_dept'] == police_dept[k])].mean()
-            child3_list = []
-            crime_type = list(test['crime_type'].loc[(test['county_name']==counties[i]) & (test['police_dept'] == police_dept[k])].unique())
-            for j in range(len(crime_type)):
-                for index,row in test.loc[(test['county_name']==counties[i]) & (test['police_dept'] == police_dept[k]) & (test['crime_type'] == crime_type[j])].iterrows():
-                    child3 = {}
-                    child3["name"] = row["crime_type"]
-                    child3["description"] = row["count"]
-                    child3["size"] = row["count"]
-                    child3_list.append(child3)
-                child2["children"] = child3_list
-            child2_list.append(child2)
-        child1["children"] = child2_list
-        children.append(child1)
-    data_json3["children"] = children
-    with open("static/data/crime.json", "w",encoding ='utf8') as outfile:  
-        json.dump(data_json3, outfile, indent = 1) 
-    print("Data retrieval successfull")
-    if data_json3:
-        print("Json ready")
-    else:
-        print("Json failed!")
-    return jsonify(data_json3)
+#     children = []
+#     children = []
+#     for i in range(len(counties)):
+#         child1 = {}
+#         child1["name"] = counties[i]
+#         child1["description"] = test['count'].loc[test['county_name']==counties[i]].mean()
+#         police_dept = list(test['police_dept'].loc[test['county_name']==counties[i]].unique())
+#         child2_list = []
+#         for k in range(len(police_dept)):
+#             child2 = {}
+#             child2["name"] = police_dept[k]
+#             child2["description"] = test['count'].loc[(test['county_name']==counties[i]) & (test['police_dept'] == police_dept[k])].mean()
+#             child3_list = []
+#             crime_type = list(test['crime_type'].loc[(test['county_name']==counties[i]) & (test['police_dept'] == police_dept[k])].unique())
+#             for j in range(len(crime_type)):
+#                 for index,row in test.loc[(test['county_name']==counties[i]) & (test['police_dept'] == police_dept[k]) & (test['crime_type'] == crime_type[j])].iterrows():
+#                     child3 = {}
+#                     child3["name"] = row["crime_type"]
+#                     child3["description"] = row["count"]
+#                     child3["size"] = row["count"]
+#                     child3_list.append(child3)
+#                 child2["children"] = child3_list
+#             child2_list.append(child2)
+#         child1["children"] = child2_list
+#         children.append(child1)
+#     data_json3["children"] = children
+#     with open("static/data/crime.json", "w",encoding ='utf8') as outfile:  
+#         json.dump(data_json3, outfile, indent = 1) 
+#     print("Data retrieval successfull")
+#     if data_json3:
+#         print("Json ready")
+#     else:
+#         print("Json failed!")
+#     return jsonify(data_json3)
 
 # @app.route('/tax_json')
 # def tax_json():
@@ -431,48 +449,54 @@ def d3_sunburst_crime():
 def leaflet():
     return render_template("leaflet.html")
 
-
+# get leaflet geojson
 @app.route('/api/leaflet_data')
 def leaflet_data():
-    #  SQLite DB creation and establishing connection
-    database_path = "Resources/NJ_CPS.sqlite"
-    engine = create_engine(f"sqlite:///{database_path}", echo=True)
+    f = open("static/data/final.geojson")
+    data = json.load(f)
+    return data
+
+# @app.route('/api/leaflet_data')
+# def leaflet_data():
+#     #  SQLite DB creation and establishing connection
+#     database_path = "Resources/NJ_CPS.sqlite"
+#     engine = create_engine(f"sqlite:///{database_path}", echo=True)
 
 
-    sqlite_connection = engine.connect()
-    print("Data retrieval successfull")
-    query = '''SELECT T1.*, T2.school_rating, T3.tax_rate, T4.poverty_rate, T5.median_hh_income, T6.population
-            FROM
-            (SELECT county_name, total as crime_rate from NJ_crime WHERE report_type = 'Rate Per 100,000') AS T1
-            INNER JOIN (SELECT county_name, AVG(rating) AS school_rating FROM NJ_school_rating  GROUP BY 1) AS T2 
-            ON T1.county_name = T2.county_name
-            INNER JOIN (SELECT county_name, AVG(effective_tax_rate) AS tax_rate FROM NJ_tax GROUP BY 1) AS T3
-            ON T1.county_name = T3.county_name
-            INNER JOIN (SELECT county_name, AVG(poverty_rate) AS poverty_rate FROM NJ_poverty GROUP BY 1) AS T4
-            ON T1.county_name = T4.county_name
-            INNER JOIN (SELECT county_name, AVG(median_hh_income) AS median_hh_income FROM NJ_poverty GROUP BY 1) AS T5
-            ON T1.county_name = T5.county_name
-            INNER JOIN (SELECT county_name, SUM(population) AS population FROM NJ_population GROUP BY 1) AS T6
-            ON T1.county_name = T6.county_name
-    '''
-    test = pd.read_sql_query(query, sqlite_connection)
+#     sqlite_connection = engine.connect()
+#     print("Data retrieval successfull")
+#     query = '''SELECT T1.*, T2.school_rating, T3.tax_rate, T4.poverty_rate, T5.median_hh_income, T6.population
+#             FROM
+#             (SELECT county_name, total as crime_rate from NJ_crime WHERE report_type = 'Rate Per 100,000') AS T1
+#             INNER JOIN (SELECT county_name, AVG(rating) AS school_rating FROM NJ_school_rating  GROUP BY 1) AS T2 
+#             ON T1.county_name = T2.county_name
+#             INNER JOIN (SELECT county_name, AVG(effective_tax_rate) AS tax_rate FROM NJ_tax GROUP BY 1) AS T3
+#             ON T1.county_name = T3.county_name
+#             INNER JOIN (SELECT county_name, AVG(poverty_rate) AS poverty_rate FROM NJ_poverty GROUP BY 1) AS T4
+#             ON T1.county_name = T4.county_name
+#             INNER JOIN (SELECT county_name, AVG(median_hh_income) AS median_hh_income FROM NJ_poverty GROUP BY 1) AS T5
+#             ON T1.county_name = T5.county_name
+#             INNER JOIN (SELECT county_name, SUM(population) AS population FROM NJ_population GROUP BY 1) AS T6
+#             ON T1.county_name = T6.county_name
+#     '''
+#     test = pd.read_sql_query(query, sqlite_connection)
 
-    geojson_url = 'https://opendata.arcgis.com/datasets/5f45e1ece6e14ef5866974a7b57d3b95_1.geojson'
-    geojson = requests.get(geojson_url).json()
-    print("Geojson retrieval successfull")
+#     geojson_url = 'https://opendata.arcgis.com/datasets/5f45e1ece6e14ef5866974a7b57d3b95_1.geojson'
+#     geojson = requests.get(geojson_url).json()
+#     print("Geojson retrieval successfull")
 
-    for i in range(len(geojson['features'])):
-        county = geojson['features'][i]['properties']['COUNTY']
-        geojson['features'][i]['properties']['crime_rate'] = test['crime_rate'].loc[test['county_name']==county].item()
-        geojson['features'][i]['properties']['school_rating'] = test['school_rating'].loc[test['county_name']==county].item()
-        geojson['features'][i]['properties']['tax_rate'] = test['tax_rate'].loc[test['county_name']==county].item()
-        geojson['features'][i]['properties']['poverty_rate'] = test['poverty_rate'].loc[test['county_name']==county].item()
-        geojson['features'][i]['properties']['median_hh_income'] = test['median_hh_income'].loc[test['county_name']==county].item()
-        geojson['features'][i]['properties']['population'] = test['crime_rate'].loc[test['county_name']==county].item()
-    print("Geojson modification successfull")
-    with open("static/data/final.geojson", "w",encoding ='utf8') as outfile:  
-        json.dump(geojson, outfile) 
-    return jsonify(geojson)
+#     for i in range(len(geojson['features'])):
+#         county = geojson['features'][i]['properties']['COUNTY']
+#         geojson['features'][i]['properties']['crime_rate'] = test['crime_rate'].loc[test['county_name']==county].item()
+#         geojson['features'][i]['properties']['school_rating'] = test['school_rating'].loc[test['county_name']==county].item()
+#         geojson['features'][i]['properties']['tax_rate'] = test['tax_rate'].loc[test['county_name']==county].item()
+#         geojson['features'][i]['properties']['poverty_rate'] = test['poverty_rate'].loc[test['county_name']==county].item()
+#         geojson['features'][i]['properties']['median_hh_income'] = test['median_hh_income'].loc[test['county_name']==county].item()
+#         geojson['features'][i]['properties']['population'] = test['crime_rate'].loc[test['county_name']==county].item()
+#     print("Geojson modification successfull")
+#     with open("static/data/final.geojson", "w",encoding ='utf8') as outfile:  
+#         json.dump(geojson, outfile) 
+#     return jsonify(geojson)
 
 # render bonus.html  
 @app.route('/bonus')
