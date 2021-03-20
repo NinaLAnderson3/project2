@@ -26,8 +26,8 @@
 Our biggest challenege from the Data sources was combining the all the different sets that would be useable for us. We had to convert the data, clean the data, synchronize key names such as country names, create a new json from Sqlite, and merge multiple json and geojsons. 
 
 #### D3 Page
-  1. The X-Axis is based on Poverty Rate, Average School Rank, House Hold Median Income
-  2. The Y-Axis is based Crime Data which are Crime Rate per 100K, Total Offense, Total Arrest.
+  1) The X-Axis is based on Poverty Rate, Average School Rank, House Hold Median Income
+  2) The Y-Axis is based Crime Data which are Crime Rate per 100K, Total Offense, Total Arrest.
 With this anyone can compare any of the X axis, and be measured against the data on the Y axis. The chart will plot the counties data based on which X and Y axis pair are activated.
 
 #### Plotly Page
