@@ -54,7 +54,7 @@ With this anyone can compare any of the X axis, and be measured against the data
 
   
   ## Source Data Set
-  1. Drop down menu where you can see all the source data set and filter each data set by their column values.
+  Drop down menu where you can see all the source data set and filter each data set by their column values.
   
   
   ## Bonus
