@@ -10,7 +10,10 @@
 # Our Process
 ![Flow](static/images/etl-flowchart.png)
 
-## Our Challenges & Solutions
+# Our Challenges & Solutions
+
+Our biggest challenege from the Data sources was combining the all the different sets that would be useable for us. We had to convert the data, clean the data, synchronize key names such as country names, create a new json from Sqlite, and merge multiple json and geojsons. 
+
 
 ## Our Data Sources
 
@@ -25,7 +28,6 @@
  #### Poverty Data
 https://api.census.gov/data/timeseries/poverty/saipe?get=NAME,SAEMHI_PT,SAEMHI_MOE,SAEPOVALL_PT,SAEPOVALL_MOE,SAEPOVRTALL_MOE,SAEPOVRTALL_PT,STABREV&for=county:*&in=state:34&YEAR=2019
 
-Our biggest challenege from the Data sources was combining the all the different sets that would be useable for us. We had to convert the data, clean the data, synchronize key names such as country names, create a new json from Sqlite, and merge multiple json and geojsons. 
 
 ## D3 Page
   1) The X-Axis is based on Poverty Rate, Average School Rank, House Hold Median Income
@@ -60,5 +62,5 @@ With this anyone can compare any of the X axis, and be measured against the data
 
   ## Instructions
   1. Clone the Repo
-  2. Update the config key with your leaflet Ao
+  2. Update the config key with your leaflet Api Key
   3. Run app.py
