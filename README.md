@@ -17,8 +17,11 @@
 
  1) https://www.state.nj.us/treasury/taxation/lpt/taxrate.shtml
  2) http://data.ci.newark.nj.us/dataset/new-jersey-counties-polygon/resource/95db8cad-3a8c-41a4-b8b1-4991990f07f3
+ 3) https://rc.doe.state.nj.us/ReportsDatabase.aspx
+ 4) https://www.njsp.org/ucr/current-crime-data.shtml
+ 5) https://api.census.gov/data/timeseries/poverty/saipe?get=NAME,SAEMHI_PT,SAEMHI_MOE,SAEPOVALL_PT,SAEPOVALL_MOE,SAEPOVRTALL_MOE,SAEPOVRTALL_PT,STABREV&for=county:*&in=state:34&YEAR=2019
 
-Our biggest challenege from the Data sources was combining the all the different sets that would be useable for us. We had to convert the data, clean the data, synchronize key names such as country names, create a new jsn from Sqlitt, and merge multiple json and geojsons. 
+Our biggest challenege from the Data sources was combining the all the different sets that would be useable for us. We had to convert the data, clean the data, synchronize key names such as country names, create a new json from Sqlite, and merge multiple json and geojsons. 
 
 #### D3 Page
 Our D3 page is heavily influence by the D3 assignment. 
