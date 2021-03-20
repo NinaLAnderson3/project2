@@ -9,7 +9,7 @@
 
 
 ### Our Process
-![Flow](static/images/etl-flowchart.jpg)
+![Flow](static/images/etl-flowchart.png)
 
 ### Our Challenges & ### Solutions
 
