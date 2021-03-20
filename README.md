@@ -39,7 +39,7 @@ With this anyone can compare any of the X axis, and be measured against the data
  2. The Horizantal Bar Chart ranks the top 10 schools per country.
  C, The Gauge Chart shows the Median Income for the county and compares it to the State Median Income. For Example Morris County has median income of $116.3k which will show a +31.2K indicating it is about $31,200 greater than the states median. Unlike Cumberland County which a m.i of 54.2k and is 31k lesser than the States.
  3. The Bubble Chart is based on the Crime Date Data. The bigger the bigger the bubble the more pronounce that particular crime is on that county compared to other crimes.
- E. With this anyone can look at this summarize page of each county and determine if they think it fits there criteria of a place to live in.
+ 4. With this anyone can look at this summarize page of each county and determine if they think it fits there criteria of a place to live in.
  
  ## Leaflet
   1. We went through various design iterations with the Leaflet in showing our Data. 
