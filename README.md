@@ -1,7 +1,7 @@
 # Project 2 - NJ Movers Guide - Back Benchers
 
 ### Our Members
-![Intro](ScreenShots/Intro.png)
+![Intro](static/images/Intro.png)
 
 
 # Our Goals
