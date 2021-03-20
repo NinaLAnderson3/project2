@@ -38,15 +38,15 @@ With this anyone can compare any of the X axis, and be measured against the data
  E. With this anyone can look at this summarize page of each county and determine if they think it fits there criteria of a place to live in.
  
  #### Leaflet
-  A. We went through various design iterations with the Leaflet in showing our Data. 
+  1. We went through various design iterations with the Leaflet in showing our Data. 
      1. We started off regular markers with a simple popup.
      2. We flirted with custom icons that uses Star War Images where the icons were base on the county Summative Score, and the size based on Tax Rate.
      3. We did circles where Summative Score showed color, and circle size based on Tax Rate.
-  B. Finall we decided to remove the clutter and have we have on screen.
+  2. Finall we decided to remove the clutter and have we have on screen.
      1. Where the County Fill Color is based on the county Crime Rate per 100k. The Darker the color the higher the crime Rate
      2. The top border of the county line will show the tax rate. The lighter shade of blue will indicate a lower Tax Rate.
      3. When someone hovers on a county a summary of the general info will pop up.
-  C. This page is to help a person make a decision based on the the geography and location.
+  3. This page is to help a person make a decision based on the the geography and location.
   
   #### Bonus
   
