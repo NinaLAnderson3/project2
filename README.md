@@ -31,10 +31,10 @@ Our biggest challenege from the Data sources was combining the all the different
 With this anyone can compare any of the X axis, and be measured against the data on the Y axis. The chart will plot the counties data based on which X and Y axis pair are activated.
 
 #### Plotly Page
- A. Drop Down Menu is provided to select County Names which will provide general ifnformation on each County.
- B. The Horizantal Bar Chart ranks the top 10 schools per country.
+ 1 ** Drop Down Menu is provided to select County Names which will provide general ifnformation on each County.
+ 2) The Horizantal Bar Chart ranks the top 10 schools per country.
  C, The Gauge Chart shows the Median Income for the county and compares it to the State Median Income. For Example Morris County has median income of $116.3k which will show a +31.2K indicating it is about $31,200 greater than the states median. Unlike Cumberland County which a m.i of 54.2k and is 31k lesser than the States.
- D. The Bubble Chart is based on the Crime Date Data. The bigger the bigger the bubble the more pronounce that particular crime is on that county compared to other crimes.
+ 3) The Bubble Chart is based on the Crime Date Data. The bigger the bigger the bubble the more pronounce that particular crime is on that county compared to other crimes.
  E. With this anyone can look at this summarize page of each county and determine if they think it fits there criteria of a place to live in.
  
  #### Leaflet
