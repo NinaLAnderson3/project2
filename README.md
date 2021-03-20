@@ -8,20 +8,25 @@
 ## Our goal is to create a guide that would educate potential movers on where to live in New Jersey based on certain criteria such geography, crime rate, education level, and tax rate.
 
 
+
+
 ### Our Process
 ![Flow](static/images/etl-flowchart.png)
 
-### Our Challenges & ### Solutions
+### Our Challenges & Solutions
 
 ### Our Data Sources
 
- #### Tax Rate
+ #### Tax Rate Data
  1) https://www.state.nj.us/treasury/taxation/lpt/taxrate.shtml
- #### Tax Rate
+ #### County Lines and Shape Data
  3) http://data.ci.newark.nj.us/dataset/new-jersey-counties-polygon/resource/95db8cad-3a8c-41a4-b8b1-4991990f07f3
- 4) https://rc.doe.state.nj.us/ReportsDatabase.aspx
- 5) https://www.njsp.org/ucr/current-crime-data.shtml
- 6) https://api.census.gov/data/timeseries/poverty/saipe?get=NAME,SAEMHI_PT,SAEMHI_MOE,SAEPOVALL_PT,SAEPOVALL_MOE,SAEPOVRTALL_MOE,SAEPOVRTALL_PT,STABREV&for=county:*&in=state:34&YEAR=2019
+ #### NJ Education Data
+ 5) https://rc.doe.state.nj.us/ReportsDatabase.aspx
+ #### Crime Data
+ 7) https://www.njsp.org/ucr/current-crime-data.shtml
+ #### Poverty Data
+ 9) https://api.census.gov/data/timeseries/poverty/saipe?get=NAME,SAEMHI_PT,SAEMHI_MOE,SAEPOVALL_PT,SAEPOVALL_MOE,SAEPOVRTALL_MOE,SAEPOVRTALL_PT,STABREV&for=county:*&in=state:34&YEAR=2019
 
 Our biggest challenege from the Data sources was combining the all the different sets that would be useable for us. We had to convert the data, clean the data, synchronize key names such as country names, create a new json from Sqlite, and merge multiple json and geojsons. 
 
@@ -47,6 +52,16 @@ With this anyone can compare any of the X axis, and be measured against the data
      2. The top border of the county line will show the tax rate. The lighter shade of blue will indicate a lower Tax Rate.
      3. When someone hovers on a county a summary of the general info will pop up.
   3. This page is to help a person make a decision based on the the geography and location.
+
+  
+  #### Source Data Set
+  1. Drop down menu where you can see all the source data set and have a filter each data set by their column values.
+  
   
   #### Bonus
-  
+   Explore it and see.
+
+  #### Instructions
+  1. Clone the Repo
+  2. Update the config key
+  3. Run app.py
