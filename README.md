@@ -3,7 +3,7 @@
 ### Our Members
 ![Intro](static/images/Intro.png)
 
-#Check Us Out on Heroku!!!
+# Check Us Out on Heroku!!!
 https://backbenchers-njnewmovers.herokuapp.com/
 
 # Our Goals
