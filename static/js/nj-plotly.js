@@ -179,7 +179,7 @@ function plotCharts(initCounty) {
                 }
             },
             xaxis: {
-                title: "<b>Schoole rating <b>",
+                title: "<b>School rating <b>",
                 color: 'black'
             },
             yaxis: {
